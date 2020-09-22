@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {UserGeolocation} from "../hooks/useGeolocation";
 import {MarkSeriesPoint} from "react-vis";
-import {HttpService} from "../services/http.service";
-import {SecurityService} from "../services/security.service";
 import {XYChartService} from "../services/x-y-chart.service";
 import XYChart from "./XYChart";
+import {CoffeeShopsService} from "../services/coffee-shops.service";
 
 interface NearestCoffeeShopsProps {
     selectedDataPointCallback: (dataPoint: MarkSeriesPoint | null) => void;
@@ -16,24 +15,7 @@ const NearestCoffeeShops: React.FC<NearestCoffeeShopsProps> = (props) => {
     const [chartData, setChartData] = useState<any[]>([]);
 
     useEffect(() => {
-        (async () => {
-            const httpService: HttpService = HttpService.getInstance();
-            const securityService: SecurityService = new SecurityService();
-
-            const token = securityService.getToken();
-
-            try {
-                const response = await httpService.get(`${HttpService.baseUrl}/v1/coffee_shops?token=${token}`);
-                if (!response.ok) {
-                    throw Error(response.statusText);
-                }
-
-                const result = response.parsedBody as any[] || [];
-                setRemoteData(result.map(p => ({...p, x: Number(p.x), y: Number(p.y)})));
-            } catch (error) {
-                console.error(error);
-            }
-        })();
+        getDataAsync();
     }, []);
 
     useEffect(() => {
@@ -41,6 +23,15 @@ const NearestCoffeeShops: React.FC<NearestCoffeeShopsProps> = (props) => {
         const result = xyChartService.getNearest3Points(props.userLocation.latitude, props.userLocation.longitude, remoteData);
         setChartData(result);
     }, [remoteData, props.userLocation])
+
+    const getDataAsync = async () => {
+        const coffeeShopsService: CoffeeShopsService = new CoffeeShopsService();
+        const result = await coffeeShopsService.getShops();
+
+        if(!result) { return; }
+
+        setRemoteData(result.map(p => ({...p, x: Number(p.x), y: Number(p.y)})));
+    }
 
     return (
         <XYChart
