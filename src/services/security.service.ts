@@ -3,7 +3,7 @@ export class SecurityService {
         let token = sessionStorage.accessToken || localStorage.accessToken;
 
         if(token && token !== "undefined") {
-            return `Bearer ${token}`
+            return token;
         } else {
             return null;
         }

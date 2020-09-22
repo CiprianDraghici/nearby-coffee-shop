@@ -65,8 +65,7 @@ export class HttpService {
         const token = this.securityService.getToken();
         headers = {...headers, ...{
                 'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': token
+                'Content-Type': 'application/json'
             }};
 
         return headers;

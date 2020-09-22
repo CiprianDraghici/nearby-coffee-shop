@@ -1,26 +1,71 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import XYChart from "./components/XYChart";
+import {useGeolocation} from "./hooks/useGeolocation";
+import {XYChartService} from "./services/x-y-chart.service";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const xyChartService: XYChartService = new XYChartService();
+
+    const {latitude, longitude} = useGeolocation();
+    const [selectedDataPoint, setSelectedDataPoint] = useState<{id: string, name: string, x: string | number, y: string | number} | null>( null);
+
+    const getDistanceInMeters = () => {
+        return Math.round(
+            (xyChartService.computeDistance(
+                latitude,
+                Number(selectedDataPoint!.y),
+                longitude,
+                Number(selectedDataPoint!.x))
+                + Number.EPSILON) * 100) / 100;
+    }
+
+    const getDistanceInKm = () => {
+        return ((Math.round(
+            (xyChartService.computeDistance(
+                latitude,
+                Number(selectedDataPoint!.y),
+                longitude,
+                Number(selectedDataPoint!.x))
+                + Number.EPSILON) * 100) / 100) / 1000).toFixed(1);
+    }
+
+    const onSelectedDataPoint = (dataPoint: {id: string, name: string, x: string | number, y: string | number} | null) => {
+        setSelectedDataPoint(dataPoint);
+    }
+
+    const onClick = () => {
+        setSelectedDataPoint(null);
+    }
+
+    return (
+        <div className="App" onClick={onClick}>
+            <XYChart selectedDataPointCallback={onSelectedDataPoint} />
+            <div>
+                <div className="marker"/>
+                <span className="beacon"/>
+                {
+                    selectedDataPoint &&
+                    <>
+                        <div>
+                            {`Distance in meters = ${getDistanceInMeters()}`}
+                        </div>
+                        <div>
+                            {`Distance in km = ${getDistanceInKm()}`}
+                        </div>
+                    </>
+                }
+                {
+                    !selectedDataPoint &&
+                    <div>
+                        <h1>Your location</h1>
+                        <div>Latitude: {latitude}</div>
+                        <div>Longitude: {longitude}</div>
+                    </div>
+                }
+            </div>
+        </div>
+    );
 }
 
 export default App;
