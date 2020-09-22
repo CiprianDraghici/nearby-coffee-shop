@@ -4,6 +4,7 @@ import {MarkSeries, XYPlot, VerticalGridLines, HorizontalGridLines, XAxis, YAxis
 import Tooltip from "./Tooltip";
 import {HttpService} from "../services/http.service";
 import {SecurityService} from "../services/security.service";
+import {XYChartService} from "../services/x-y-chart.service";
 
 interface XYChartProps {
     selectedDataPointCallback: (dataPoint: {id: string, name: string, x: string | number, y: string | number} | null) => void;
@@ -14,12 +15,14 @@ const XYChart: React.FC<XYChartProps> = (props) => {
 
     const [selectedDataPoint, setSelectedDataPoint] = useState<{id: string, name: string, x: string | number, y: string | number} | null>( null);
     const [tooltipPosition, setTooltipPosition] = useState<{x: string | number, y: string | number} | null>( null);
+    const [remoteData, setRemoteData] = useState<any[]>([]);
     const [data, setData] = useState<any[]>([]);
 
     useEffect(() => {
         (async () => {
             const httpService: HttpService = HttpService.getInstance();
             const securityService: SecurityService = new SecurityService();
+
             const token = securityService.getToken();
 
             try {
@@ -29,15 +32,20 @@ const XYChart: React.FC<XYChartProps> = (props) => {
                 }
 
                 const result = response.parsedBody as any[] || [];
-                setData(result);
+                setRemoteData(result.map(p => ({...p, x: Number(p.x), y: Number(p.y)})));
             } catch (error) {
                 console.error(error);
             }
         })();
     }, []);
 
+    useEffect(() => {
+        const xyChartService: XYChartService = new XYChartService();
+        const result = xyChartService.getNearest3Points(latitude, longitude, remoteData);
+        setData(result);
+    }, [remoteData, latitude, longitude])
+
     const onValueClick = (datapoint: any, e: any) => {
-        e.event.preventDefault();
         e.event.stopPropagation();
 
         setSelectedDataPoint(datapoint);
@@ -51,6 +59,7 @@ const XYChart: React.FC<XYChartProps> = (props) => {
 
     const onClick = () => {
         setSelectedDataPoint(null);
+        setTooltipPosition(null);
         props.selectedDataPointCallback(null);
     }
 

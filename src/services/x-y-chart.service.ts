@@ -1,3 +1,5 @@
+import {MarkSeriesPoint} from "react-vis";
+
 export class XYChartService {
     /**
      * @Reference: https://www.movable-type.co.uk/scripts/latlong.html
@@ -15,5 +17,14 @@ export class XYChartService {
         const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
         return R * c; // in metres
+    }
+
+    public getNearest3Points = (latitude: number, longitude: number, data: MarkSeriesPoint[]) => {
+        const sorted = data.sort( (a, b) => {
+            const distance1 = this.computeDistance(45.7802541, Number(a.y), 24.1780586, Number(a.x));
+            const distance2 = this.computeDistance(45.7802541, Number(b.y), 24.1780586, Number(b.x))
+            return distance1 - distance2;
+        });
+        return sorted.slice(0, 3);
     }
 }
