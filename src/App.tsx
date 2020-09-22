@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import PinInfo from "./components/PinInfo";
-import NearestCoffeeShops from './components/NearestCoffeeShops';
+import NearestCoffeeShops from "./components/NearestCoffeeShops";
 import {MarkSeriesPoint} from "react-vis";
 import {useGeolocation} from "./hooks/useGeolocation";
 
