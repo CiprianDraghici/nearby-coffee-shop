@@ -57,7 +57,7 @@ const XYChart: React.FC<XYChartProps> = (props) => {
     const TooltipContent = () => {
         return (
             <div>
-                <h3>{selectedDataPoint!.name}</h3>
+                <h5>{selectedDataPoint!.name}</h5>
                 <div style={{textAlign: "left"}}>{`Latitude: ${selectedDataPoint!.y}`}</div>
                 <div style={{textAlign: "left"}}>{`Longitude: ${selectedDataPoint!.x}`}</div>
             </div>

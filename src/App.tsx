@@ -40,29 +40,33 @@ function App() {
 
     return (
         <div className="App" onClick={onClick}>
-            <XYChart selectedDataPointCallback={onSelectedDataPoint} />
-            <div>
-                <div className="marker"/>
-                <span className="beacon"/>
-                {
-                    selectedDataPoint &&
-                    <>
-                        <div>
-                            {`Distance in meters = ${getDistanceInMeters()}`}
+            <div className="row">
+                <div className="col">
+                    <XYChart selectedDataPointCallback={onSelectedDataPoint} />
+                </div>
+                <div className="col">
+                    <div className="marker"/>
+                    <span className="beacon"/>
+                    {
+                        selectedDataPoint &&
+                        <div style={{position: "absolute", left: "60%", top: "50%"}}>
+                            <div>
+                                {`Distance in meters = ${getDistanceInMeters()}`}
+                            </div>
+                            <div>
+                                {`Distance in km = ${getDistanceInKm()}`}
+                            </div>
                         </div>
-                        <div>
-                            {`Distance in km = ${getDistanceInKm()}`}
+                    }
+                    {
+                        !selectedDataPoint &&
+                        <div style={{position: "absolute", left: "60%", top: "50%"}}>
+                            <h1>Your location</h1>
+                            <div>Latitude: {latitude}</div>
+                            <div>Longitude: {longitude}</div>
                         </div>
-                    </>
-                }
-                {
-                    !selectedDataPoint &&
-                    <div>
-                        <h1>Your location</h1>
-                        <div>Latitude: {latitude}</div>
-                        <div>Longitude: {longitude}</div>
-                    </div>
-                }
+                    }
+                </div>
             </div>
         </div>
     );

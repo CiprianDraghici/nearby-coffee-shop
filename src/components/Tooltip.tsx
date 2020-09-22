@@ -14,7 +14,7 @@ const Tooltip: React.FC<{
         <>
             {
                 props.show &&
-                <div className="tooltip" style={{position: "absolute", left: props.position.x, top: props.position.y}}>
+                <div className="custom-tooltip" style={{position: "absolute", left: props.position.x, top: props.position.y}}>
                     <Content />
                 </div>
             }
