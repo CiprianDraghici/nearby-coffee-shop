@@ -5,11 +5,14 @@ export const useGeolocation = () => {
     const [longitude, setLongitude] = useState(0);
 
     useEffect(() => {
-        navigator.geolocation.watchPosition(function(position) {
-            setLatitude(position.coords.latitude);
-            setLongitude(position.coords.longitude);
-        });
+        navigator.geolocation.getCurrentPosition(setCoordsCallback);
+        navigator.geolocation.watchPosition(setCoordsCallback);
     }, []);
+
+    const setCoordsCallback = (position: Position) => {
+        setLatitude(position.coords.latitude);
+        setLongitude(position.coords.longitude);
+    }
 
     return {
         latitude,
