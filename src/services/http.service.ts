@@ -62,7 +62,6 @@ export class HttpService {
     }
 
     private resolveHeaders(headers: any) {
-        const token = this.securityService.getToken();
         headers = {...headers, ...{
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'

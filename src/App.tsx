@@ -1,12 +1,15 @@
 import React, {useState} from 'react';
 import './App.css';
-import XYChart from "./components/XYChart";
 import PinInfo from "./components/PinInfo";
+import NearestCoffeeShops from './components/NearestCoffeeShops';
+import {MarkSeriesPoint} from "react-vis";
+import {useGeolocation} from "./hooks/useGeolocation";
 
 function App() {
-    const [selectedDataPoint, setSelectedDataPoint] = useState<{id: string, name: string, x: string | number, y: string | number} | null>( null);
+    const {userGeoLocation} = useGeolocation();
+    const [selectedDataPoint, setSelectedDataPoint] = useState< MarkSeriesPoint | null>( null);
 
-    const onSelectedDataPoint = (dataPoint: {id: string, name: string, x: string | number, y: string | number} | null) => {
+    const onSelectedDataPoint = (dataPoint: MarkSeriesPoint | null) => {
         setSelectedDataPoint(dataPoint);
     }
 
@@ -14,10 +17,10 @@ function App() {
         <div className="App">
             <div className="row">
                 <div className="col">
-                    <XYChart selectedDataPointCallback={onSelectedDataPoint} />
+                    <NearestCoffeeShops selectedDataPointCallback={onSelectedDataPoint} userLocation={userGeoLocation} />
                 </div>
                 <div className="col">
-                    <PinInfo selectedDataPoint={selectedDataPoint} />
+                    <PinInfo selectedDataPoint={selectedDataPoint} userLocation={userGeoLocation} />
                 </div>
             </div>
         </div>

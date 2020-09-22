@@ -1,29 +1,29 @@
 import React from 'react';
-import {useGeolocation} from "../hooks/useGeolocation";
 import {XYChartService} from "../services/x-y-chart.service";
 import {MarkSeriesPoint} from "react-vis";
+import {UserGeolocation} from "../hooks/useGeolocation";
 
 interface DisplayDistanceInfoProps {
     selectedDataPoint: MarkSeriesPoint | null;
+    userLocation: UserGeolocation;
 }
 
 const DisplayDistance: React.FC<DisplayDistanceInfoProps> = (props) => {
     const xyChartService: XYChartService = new XYChartService();
-    const {latitude, longitude} = useGeolocation();
 
     const getDistanceInMeters = () => {
         return xyChartService.computeDistance(
-            latitude,
+            props.userLocation.latitude,
             Number(props.selectedDataPoint!.y),
-            longitude,
+            props.userLocation.longitude,
             Number(props.selectedDataPoint!.x)).toFixed(2);
     }
 
     const getDistanceInKm = () => {
         return (xyChartService.computeDistance(
-            latitude,
+            props.userLocation.latitude,
             Number(props.selectedDataPoint!.y),
-            longitude,
+            props.userLocation.longitude,
             Number(props.selectedDataPoint!.x)) / 1000).toFixed(2);
     }
 
