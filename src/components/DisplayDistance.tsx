@@ -28,14 +28,10 @@ const DisplayDistance: React.FC<DisplayDistanceInfoProps> = (props) => {
     }
 
     return (
-        <div style={{position: "absolute", left: "60%", top: "50%"}}>
-            <div>
-                {`Distance in meters = ${getDistanceInMeters()}`}
-            </div>
-            <div>
-                {`Distance in km = ${getDistanceInKm()}`}
-            </div>
-        </div>
+        <text x={0} y={0}>
+            <tspan x="-60" y="40">{`Distance [m]: ${getDistanceInMeters()}`}</tspan>
+            <tspan x="-60" y="60">{`Distance [km]: ${getDistanceInKm()}`}</tspan>
+        </text>
     );
 }
 

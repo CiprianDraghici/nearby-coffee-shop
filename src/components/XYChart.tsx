@@ -9,13 +9,10 @@ interface XYChartProps {
 }
 
 const XYChart: React.FC<XYChartProps> = (props) => {
-    const [selectedDataPoint, setSelectedDataPoint] = useState<{id: string, name: string, x: string | number, y: string | number} | null>( null);
     const [tooltipPosition, setTooltipPosition] = useState<{x: string | number, y: string | number, datapoint: MarkSeriesPoint} | null>( null);
 
     const onValueClick = (datapoint: any, e: any) => {
         e.event.stopPropagation();
-
-        setSelectedDataPoint(datapoint);
         props.selectedDataPointCallback(datapoint);
     }
 
@@ -29,17 +26,30 @@ const XYChart: React.FC<XYChartProps> = (props) => {
         });
     }
 
+    const onUserMouseOver = (datapoint: any, e: any) => {
+        e.event.stopPropagation();
+
+        setTooltipPosition({
+            x: e.event.target.parentElement.parentElement.parentElement.parentElement.getBBox().x + 50,
+            y: e.event.target.parentElement.parentElement.parentElement.parentElement.getBBox().y + 30,
+            datapoint
+        });
+    }
+
     const onValueMouseOut = (datapoint: any, e: any) => {
         e.event.stopPropagation();
         setTooltipPosition(null);
     }
 
     const onClick = () => {
-        setSelectedDataPoint(null);
         props.selectedDataPointCallback(null);
     }
 
     const TooltipContent = () => {
+        if(!tooltipPosition) { return <></>;}
+        console.log(tooltipPosition!.datapoint);
+        console.log(tooltipPosition);
+
         return (
             <div>
                 <div style={{textAlign: "left"}}>{`Latitude: ${tooltipPosition!.datapoint.y}`}</div>
@@ -67,9 +77,10 @@ const XYChart: React.FC<XYChartProps> = (props) => {
                 onValueMouseOut={onValueMouseOut}
             />
             <LabelSeries animation allowOffsetToBeReversed data={[...props.data, props.userDataPoint] as any[]} />
-            <CustomSVGSeries data={[props.userDataPoint] as any[]} onValueClick={onValueClick} />
+            <CustomSVGSeries data={[props.userDataPoint] as any[]} onValueMouseOver={onUserMouseOver} onValueMouseOut={onValueMouseOut} />
             
             <Tooltip show={!!tooltipPosition} position={{...tooltipPosition!}} content={TooltipContent} />
+            {/*<Tooltip show={true} position={{x: 300, y: 300}} content={TooltipContent} />*/}
         </XYPlot>
     )
 }
