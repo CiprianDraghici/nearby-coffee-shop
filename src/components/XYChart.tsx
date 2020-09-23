@@ -1,40 +1,49 @@
 import React, {useState} from "react";
-import {MarkSeries, XYPlot, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, MarkSeriesPoint} from "react-vis";
+import {XYPlot, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, MarkSeriesPoint, CustomSVGSeries, MarkSeries, LabelSeries} from "react-vis";
 import Tooltip from "./Tooltip";
 
 interface XYChartProps {
     data: MarkSeriesPoint[];
+    userDataPoint: MarkSeriesPoint;
     selectedDataPointCallback: (dataPoint: MarkSeriesPoint | null) => void;
 }
 
 const XYChart: React.FC<XYChartProps> = (props) => {
     const [selectedDataPoint, setSelectedDataPoint] = useState<{id: string, name: string, x: string | number, y: string | number} | null>( null);
-    const [tooltipPosition, setTooltipPosition] = useState<{x: string | number, y: string | number} | null>( null);
+    const [tooltipPosition, setTooltipPosition] = useState<{x: string | number, y: string | number, datapoint: MarkSeriesPoint} | null>( null);
 
     const onValueClick = (datapoint: any, e: any) => {
         e.event.stopPropagation();
 
         setSelectedDataPoint(datapoint);
+        props.selectedDataPointCallback(datapoint);
+    }
+
+    const onValueMouseOver = (datapoint: any, e: any) => {
+        e.event.stopPropagation();
+
         setTooltipPosition({
             x: e.event.target.getBBox().x + 50,
-            y: e.event.target.getBBox().y + 30
+            y: e.event.target.getBBox().y + 30,
+            datapoint
         });
+    }
 
-        props.selectedDataPointCallback(datapoint);
+    const onValueMouseOut = (datapoint: any, e: any) => {
+        e.event.stopPropagation();
+        setTooltipPosition(null);
     }
 
     const onClick = () => {
         setSelectedDataPoint(null);
-        setTooltipPosition(null);
         props.selectedDataPointCallback(null);
     }
 
     const TooltipContent = () => {
         return (
             <div>
-                <h5>{selectedDataPoint!.name}</h5>
-                <div style={{textAlign: "left"}}>{`Latitude: ${selectedDataPoint!.y}`}</div>
-                <div style={{textAlign: "left"}}>{`Longitude: ${selectedDataPoint!.x}`}</div>
+                <div style={{textAlign: "left"}}>{`Latitude: ${tooltipPosition!.datapoint.y}`}</div>
+                <div style={{textAlign: "left"}}>{`Longitude: ${tooltipPosition!.datapoint.x}`}</div>
             </div>
         );
     }
@@ -54,9 +63,13 @@ const XYChart: React.FC<XYChartProps> = (props) => {
                 className="mark-series-example"
                 data={props.data}
                 onValueClick={onValueClick}
+                onValueMouseOver={onValueMouseOver}
+                onValueMouseOut={onValueMouseOut}
             />
-
-            <Tooltip show={!!(selectedDataPoint && tooltipPosition)} position={{...tooltipPosition!}} content={TooltipContent} />
+            <LabelSeries animation allowOffsetToBeReversed data={[...props.data, props.userDataPoint] as any[]} />
+            <CustomSVGSeries data={[props.userDataPoint] as any[]} onValueClick={onValueClick} />
+            
+            <Tooltip show={!!tooltipPosition} position={{...tooltipPosition!}} content={TooltipContent} />
         </XYPlot>
     )
 }

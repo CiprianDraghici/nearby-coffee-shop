@@ -15,6 +15,18 @@ code {
     monospace;
 }
 
+.inline-code {
+  padding: 1rem 2rem;
+  overflow-x: hidden;
+}
+
+.inline-code.container>div {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+}
+
 .custom-tooltip {
   display: inline-block;
   padding: 3px 6px;
