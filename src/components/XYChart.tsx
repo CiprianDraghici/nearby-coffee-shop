@@ -80,7 +80,6 @@ const XYChart: React.FC<XYChartProps> = (props) => {
             <CustomSVGSeries data={[props.userDataPoint] as any[]} onValueMouseOver={onUserMouseOver} onValueMouseOut={onValueMouseOut} />
             
             <Tooltip show={!!tooltipPosition} position={{...tooltipPosition!}} content={TooltipContent} />
-            {/*<Tooltip show={true} position={{x: 300, y: 300}} content={TooltipContent} />*/}
         </XYPlot>
     )
 }

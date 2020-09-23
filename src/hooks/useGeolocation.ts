@@ -10,10 +10,10 @@ export const useGeolocation = () => {
         latitude: 0,
         longitude: 0
     });
+    const [errorGeoLocation, setErrorGeoLocation] = useState<PositionError | null>();
 
     useEffect(() => {
-        navigator.geolocation.getCurrentPosition(setCoordsCallback);
-        navigator.geolocation.watchPosition(setCoordsCallback);
+        navigator.geolocation.watchPosition(setCoordsCallback, geoErrorCallback);
     }, []);
 
     const setCoordsCallback = (position: Position) => {
@@ -23,7 +23,13 @@ export const useGeolocation = () => {
         });
     }
 
+    const geoErrorCallback = (error: PositionError) => {
+        console.error(error);
+        setErrorGeoLocation(error);
+    }
+
     return {
-        userGeoLocation
+        userGeoLocation,
+        errorGeoLocation
     }
 }
