@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import NearestCoffeeShops from "./components/NearestCoffeeShops";
 import {useGeolocation} from "./hooks/useGeolocation";
+import {ToastContainer} from "react-toastify";
 
 function App() {
     const {userGeoLocation, errorGeoLocation} = useGeolocation();
@@ -22,6 +23,7 @@ function App() {
                     </div>
                 }
             </div>
+            <ToastContainer pauseOnFocusLoss={false} />
         </div>
     );
 }

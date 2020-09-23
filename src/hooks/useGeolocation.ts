@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import {toast} from "react-toastify";
 
 export interface UserGeolocation {
     latitude: number;
@@ -25,6 +26,7 @@ export const useGeolocation = () => {
 
     const geoErrorCallback = (error: PositionError) => {
         console.error(error);
+        toast.error(error.message);
         setErrorGeoLocation(error);
     }
 
