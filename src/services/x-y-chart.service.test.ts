@@ -1,12 +1,17 @@
 import {XYChartService} from "./x-y-chart.service";
 
 describe("XYChartService", () => {
+    let sut: XYChartService;
+
+    beforeEach(() => {
+        sut = new XYChartService();
+    });
+
     describe("computeDistance method", () => {
         it("should return the distance (equals to 0) between 2 points which contains the same x/y coordinates", () => {
-            const xyChartService = new XYChartService();
             const expectedValue = 0;
 
-            const value = xyChartService.computeDistance({x: 24.1532928, y: 45.776896}, {x: 24.1532928, y: 45.776896})
+            const value = sut.computeDistance({x: 24.1532928, y: 45.776896}, {x: 24.1532928, y: 45.776896})
 
             expect(value).toEqual(expectedValue);
         });

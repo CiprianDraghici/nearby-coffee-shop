@@ -2,6 +2,12 @@ import {HttpService, IHttpResponse} from "./http.service";
 import {InitializeService} from "./initializeService";
 
 describe("InitializeService", () => {
+    let sut: InitializeService;
+
+    beforeEach(() => {
+        sut = InitializeService.getInstance();
+    });
+
     const setHttpServiceMock = (postMockedResponse: any) => {
         return  HttpService.getInstance = jest.fn().mockImplementation(() => ({
             HttpService: {
@@ -27,9 +33,8 @@ describe("InitializeService", () => {
         it('should not update localStorage and sessionStorage with a token if the request response.parsedBody does not exists', async () => {
             const mockedResponse = {ok: true, statusText: "Done", parsedBody: undefined} as IHttpResponse<{ token: string }>;
             setHttpServiceMock(mockedResponse);
-            const initializeService = InitializeService.getInstance();
 
-            await initializeService.init();
+            await sut.init();
 
             await expect(localStorage["accessToken"]).toBeUndefined();
             await expect(sessionStorage["accessToken"]).toBeUndefined();
@@ -38,9 +43,8 @@ describe("InitializeService", () => {
         it('should not update localStorage and sessionStorage with a token if the request response.parsedBody does not contains "token" property', async () => {
             const mockedResponse = {ok: true, statusText: "Done", parsedBody: {}} as IHttpResponse<{ token: string }>;
             setHttpServiceMock(mockedResponse);
-            const initializeService = InitializeService.getInstance();
 
-            await initializeService.init();
+            await sut.init();
 
             await expect(localStorage["accessToken"]).toBeUndefined();
             await expect(sessionStorage["accessToken"]).toBeUndefined();
@@ -50,9 +54,8 @@ describe("InitializeService", () => {
             const token =  "123456789";
             const mockedResponse = { ok: true, parsedBody: {token}} as IHttpResponse<{ token: string }>;
             setHttpServiceMock(mockedResponse);
-            const initializeService = InitializeService.getInstance();
 
-            await initializeService.init();
+            await sut.init();
 
             expect(localStorage.accessToken).toEqual(token);
             expect(sessionStorage.accessToken).toEqual(token);
