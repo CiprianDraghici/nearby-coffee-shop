@@ -4,7 +4,12 @@ export class XYChartService {
     /**
      * @Reference: https://www.movable-type.co.uk/scripts/latlong.html
      */
-    public computeDistance = (lat1: number, lat2: number, lon1: number, lon2: number) => {
+    public computeDistance = (point1: MarkSeriesPoint, point2: MarkSeriesPoint) => {
+        const lat1 = Number(point1.y);
+        const lat2 = Number(point2.y);
+        const lon1 = Number(point1.x);
+        const lon2 = Number(point2.x);
+
         const R = 6371e3; // metres
         const φ1 = lat1 * Math.PI/180; // φ, λ in radians
         const φ2 = lat2 * Math.PI/180;
@@ -19,10 +24,10 @@ export class XYChartService {
         return R * c; // in metres
     }
 
-    public getNearest3Points = (latitude: number, longitude: number, data: MarkSeriesPoint[]) => {
+    public getNearest3Points = (userLocation: MarkSeriesPoint, data: MarkSeriesPoint[]) => {
         const sorted = data.sort( (a, b) => {
-            const distance1 = this.computeDistance(45.7802541, Number(a.y), 24.1780586, Number(a.x));
-            const distance2 = this.computeDistance(45.7802541, Number(b.y), 24.1780586, Number(b.x))
+            const distance1 = this.computeDistance(userLocation, a);
+            const distance2 = this.computeDistance(userLocation, b);
             return distance1 - distance2;
         });
         return sorted.slice(0, 3);

@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import {UserGeolocation} from "../hooks/useGeolocation";
 import {MarkSeriesPoint} from "react-vis";
 import {XYChartService} from "../services/x-y-chart.service";
 import XYChart from "./XYChart";
@@ -7,7 +6,7 @@ import {CoffeeShopsService} from "../services/coffee-shops.service";
 import DisplayDistance from "./DisplayDistance";
 
 interface NearestCoffeeShopsProps {
-    userLocation: UserGeolocation;
+    userLocation: MarkSeriesPoint;
 }
 
 const NearestCoffeeShops: React.FC<NearestCoffeeShopsProps> = (props) => {
@@ -18,8 +17,8 @@ const NearestCoffeeShops: React.FC<NearestCoffeeShopsProps> = (props) => {
     const userDataPoint = {
         id: 0,
         name: "User",
-        x: props.userLocation.longitude,
-        y: props.userLocation.latitude,
+        x: props.userLocation.x,
+        y: props.userLocation.y,
         label: "User",
         customComponent: (row: any, positionInPixels: any) => {
             return (
@@ -46,7 +45,7 @@ const NearestCoffeeShops: React.FC<NearestCoffeeShopsProps> = (props) => {
 
     useEffect(() => {
         const xyChartService: XYChartService = new XYChartService();
-        const result = xyChartService.getNearest3Points(props.userLocation.latitude, props.userLocation.longitude, remoteData);
+        const result = xyChartService.getNearest3Points(props.userLocation, remoteData);
         setChartData(result.map(x => ({...x, label: x.name, size: 20, customComponent: "circle"})));
     }, [props.userLocation, remoteData])
 
