@@ -21,10 +21,12 @@ export class XYChartService {
             Math.sin(Δλ/2) * Math.sin(Δλ/2);
         const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
-        return R * c; // in metres
+        return R * c;
     }
 
-    public getNearest3Points = (userLocation: MarkSeriesPoint, data: MarkSeriesPoint[]) => {
+    public getNearestPoints = (userLocation: MarkSeriesPoint, data: MarkSeriesPoint[], amount: number) => {
+        if(data.length < amount) { return data; }
+
         const sorted = data.sort( (a, b) => {
             const distance1 = this.computeDistance(userLocation, a);
             const distance2 = this.computeDistance(userLocation, b);

@@ -45,7 +45,7 @@ const NearestCoffeeShops: React.FC<NearestCoffeeShopsProps> = (props) => {
 
     useEffect(() => {
         const xyChartService: XYChartService = new XYChartService();
-        const result = xyChartService.getNearest3Points(props.userLocation, remoteData);
+        const result = xyChartService.getNearestPoints(props.userLocation, remoteData, 3);
         setChartData(result.map(x => ({...x, label: x.name, size: 20, customComponent: "circle"})));
     }, [props.userLocation, remoteData])
 
