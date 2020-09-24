@@ -1,5 +1,14 @@
 import {HttpService, IHttpResponse} from "./http.service";
-import {InitializeService} from "./initializeService";
+import {InitializeService} from "./initialize.service";
+
+const setHttpServiceMock = (postMockedResponse: any) => {
+    return HttpService.getInstance = jest.fn().mockImplementation(() => ({
+        HttpService: {
+            getInstance: jest.fn().mockReturnThis()
+        },
+        post: jest.fn().mockReturnValue(Promise.resolve(postMockedResponse))
+    }));
+}
 
 describe("InitializeService", () => {
     let sut: InitializeService;
@@ -8,26 +17,15 @@ describe("InitializeService", () => {
         sut = InitializeService.getInstance();
     });
 
-    const setHttpServiceMock = (postMockedResponse: any) => {
-        return  HttpService.getInstance = jest.fn().mockImplementation(() => ({
-            HttpService: {
-                getInstance: jest.fn().mockReturnThis()
-            },
-            post: jest.fn().mockReturnValue(postMockedResponse)
-        }));
-    }
-
     describe(`"init" method`, () => {
         it('should thrown error if the request response is not ok', async () => {
             const mockedResponse = {ok: false, statusText: "Error occurred", parsedBody: undefined} as IHttpResponse<{ token: string }>;
             setHttpServiceMock(mockedResponse);
 
-            //  initializeService = InitializeService.getInstance();
-
-            // const result = initializeService.init();
+            // const result = await sut.init();
             // await expect(result).rejects.toBeTruthy();
 
-            // await expect(initializeService.init()).rejects.toBeTruthy();
+            // await expect(sut.init()).rejects.toBeTruthy();
         });
 
         it('should not update localStorage and sessionStorage with a token if the request response.parsedBody does not exists', async () => {

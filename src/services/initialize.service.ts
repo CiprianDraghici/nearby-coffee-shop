@@ -19,7 +19,7 @@ export class InitializeService {
 
             if (!response.ok) {
                 console.error(response.statusText);
-                throw new Error(response.statusText);
+                throw Error(response.statusText);
             }
 
             const result = response.parsedBody;

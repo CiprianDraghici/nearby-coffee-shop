@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {InitializeService} from "./services/initializeService";
+import {InitializeService} from "./services/initialize.service";
 
 const initializeService = InitializeService.getInstance();
 
