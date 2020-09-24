@@ -1,5 +1,16 @@
 import React, {useState} from "react";
-import {XYPlot, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, MarkSeriesPoint, CustomSVGSeries, MarkSeries, LabelSeries} from "react-vis";
+import {
+    XYPlot,
+    VerticalGridLines,
+    HorizontalGridLines,
+    XAxis,
+    YAxis,
+    MarkSeriesPoint,
+    CustomSVGSeries,
+    MarkSeries,
+    LabelSeries,
+    DiscreteColorLegend
+} from "react-vis";
 import Tooltip from "./Tooltip";
 
 interface XYChartProps {
@@ -61,29 +72,47 @@ const XYChart: React.FC<XYChartProps> = (props) => {
         );
     }
 
+    const getLegend = () => {
+        return [
+            {
+                title: "User",
+                color: "red"
+            },
+            {
+                title: "Coffee Shops",
+                color: "rgb(18 147 154)"
+            }
+        ];
+    }
+
     return (
-        <XYPlot
-            width={600}
-            height={600}
-            style={{position: "absolute"}}
-            onClick={onClick}
-        >
-            <VerticalGridLines />
-            <HorizontalGridLines />
-            <XAxis />
-            <YAxis />
-            <MarkSeries
-                className="mark-series-overrides"
-                data={props.data}
-                onValueClick={onValueClick}
-                onValueMouseOver={onValueMouseOver}
-                onValueMouseOut={onValueMouseOut}
-            />
-            <LabelSeries animation allowOffsetToBeReversed data={[...props.data, props.userDataPoint] as any[]} />
-            <CustomSVGSeries className={"custom-svg-series-anchor"} data={[props.userDataPoint] as any[]} onValueMouseOver={onUserMouseOver} onValueMouseOut={onValueMouseOut} />
-            
-            <Tooltip show={!!tooltipPosition} position={{...tooltipPosition!}} content={TooltipContent} />
-        </XYPlot>
+        <div>
+            <XYPlot
+                width={600}
+                height={600}
+                style={{position: "absolute"}}
+                onClick={onClick}
+            >
+                <VerticalGridLines />
+                <HorizontalGridLines />
+                <XAxis />
+                <YAxis />
+
+                <MarkSeries
+                    className="mark-series-overrides"
+                    data={props.data}
+                    onValueClick={onValueClick}
+                    onValueMouseOver={onValueMouseOver}
+                    onValueMouseOut={onValueMouseOut}
+                />
+                <LabelSeries allowOffsetToBeReversed={true} data={[...props.data, props.userDataPoint] as any[]} />
+                <CustomSVGSeries className={"custom-svg-series-anchor"} data={[props.userDataPoint] as any[]} onValueMouseOver={onUserMouseOver} onValueMouseOut={onValueMouseOut} />
+
+                <Tooltip show={!!tooltipPosition} position={{...tooltipPosition!}} content={TooltipContent} />
+            </XYPlot>
+            <DiscreteColorLegend items={getLegend()} orientation={"horizontal"} />
+        </div>
+
     )
 }
 
