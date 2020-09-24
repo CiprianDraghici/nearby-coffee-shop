@@ -38,3 +38,7 @@ code {
   font-family: sans-serif;
   white-space: nowrap;
 }
+
+.mark-series-overrides {
+  cursor: pointer;
+}

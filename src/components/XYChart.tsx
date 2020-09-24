@@ -29,9 +29,12 @@ const XYChart: React.FC<XYChartProps> = (props) => {
     const onUserMouseOver = (datapoint: any, e: any) => {
         e.event.stopPropagation();
 
+        const customSvgSeries = document.querySelector("g.custom-svg-series-anchor") as SVGAElement;
+        if(!customSvgSeries) { return; }
+
         setTooltipPosition({
-            x: e.event.target.parentElement.parentElement.parentElement.parentElement.getBBox().x + 50,
-            y: e.event.target.parentElement.parentElement.parentElement.parentElement.getBBox().y + 30,
+            x: customSvgSeries.getBBox().x + 50,
+            y: customSvgSeries.getBBox().y + 30,
             datapoint
         });
     }
@@ -70,14 +73,14 @@ const XYChart: React.FC<XYChartProps> = (props) => {
             <XAxis />
             <YAxis />
             <MarkSeries
-                className="mark-series-example"
+                className="mark-series-overrides"
                 data={props.data}
                 onValueClick={onValueClick}
                 onValueMouseOver={onValueMouseOver}
                 onValueMouseOut={onValueMouseOut}
             />
             <LabelSeries animation allowOffsetToBeReversed data={[...props.data, props.userDataPoint] as any[]} />
-            <CustomSVGSeries data={[props.userDataPoint] as any[]} onValueMouseOver={onUserMouseOver} onValueMouseOut={onValueMouseOut} />
+            <CustomSVGSeries className={"custom-svg-series-anchor"} data={[props.userDataPoint] as any[]} onValueMouseOver={onUserMouseOver} onValueMouseOut={onValueMouseOut} />
             
             <Tooltip show={!!tooltipPosition} position={{...tooltipPosition!}} content={TooltipContent} />
         </XYPlot>
