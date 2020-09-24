@@ -16,8 +16,10 @@ export class InitializeService {
 
         try {
             const response = await httpService.post<{token: string}>(`${HttpService.baseUrl}/v1/tokens`);
+
             if (!response.ok) {
-                throw Error(response.statusText);
+                console.error(response.statusText);
+                throw new Error(response.statusText);
             }
 
             const result = response.parsedBody;
