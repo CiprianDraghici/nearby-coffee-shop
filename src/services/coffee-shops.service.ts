@@ -10,6 +10,7 @@ export class CoffeeShopsService {
 
         try {
             const response = await httpService.get(`${HttpService.baseUrl}/v1/coffee_shops?token=${token}`);
+
             if (!response.ok) {
                 throw Error(response.statusText);
             }
