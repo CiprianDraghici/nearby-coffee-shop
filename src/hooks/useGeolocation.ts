@@ -11,10 +11,15 @@ export const useGeolocation = () => {
         latitude: 0,
         longitude: 0
     });
-    const [errorGeoLocation, setErrorGeoLocation] = useState<PositionError | null>();
+    const [errorGeoLocation, setErrorGeoLocation] = useState<PositionError |  {message: string} | null>();
 
     useEffect(() => {
-        navigator.geolocation.watchPosition(setCoordsCallback, geoErrorCallback);
+        if (navigator.geolocation) {
+            navigator.geolocation.watchPosition(setCoordsCallback, geoErrorCallback, {timeout:10000});
+        } else {
+            const error = {message: "Geolocation is not supported by this browser."};
+            handleError(error);
+        }
     }, []);
 
     const setCoordsCallback = (position: Position) => {
@@ -25,8 +30,12 @@ export const useGeolocation = () => {
     }
 
     const geoErrorCallback = (error: PositionError) => {
-        console.error(error);
-        toast.error(error.message);
+        handleError(error)
+    }
+
+    const handleError = (error: PositionError | {message: string} | null) => {
+        console.error(error?.message);
+        toast.error(error?.message);
         setErrorGeoLocation(error);
     }
 
