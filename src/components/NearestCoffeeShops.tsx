@@ -4,6 +4,7 @@ import {XYChartService} from "../services/x-y-chart.service";
 import XYChart from "./XYChart";
 import {CoffeeShopsService} from "../services/coffee-shops.service";
 import DisplayDistance from "./DisplayDistance";
+import {toast} from "react-toastify";
 
 interface NearestCoffeeShopsProps {
     userLocation: MarkSeriesPoint;
@@ -51,11 +52,16 @@ const NearestCoffeeShops: React.FC<NearestCoffeeShopsProps> = (props) => {
 
     const getDataAsync = async () => {
         const coffeeShopsService: CoffeeShopsService = new CoffeeShopsService();
-        const result = await coffeeShopsService.getShops();
 
-        if(!result) { return; }
+        try {
+            const result = await coffeeShopsService.getShops();
+            if(!result) { return; }
 
-        setRemoteData(result.map(p => ({...p, x: Number(p.x), y: Number(p.y)})));
+            setRemoteData(result.map(p => ({...p, x: Number(p.x), y: Number(p.y)})));
+        } catch (err) {
+            console.error(err);
+            toast.error(err.message);
+        }
     }
 
     return (

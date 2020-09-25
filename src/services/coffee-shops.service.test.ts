@@ -21,9 +21,16 @@ describe("CoffeeShopsService", () => {
         it('should thrown error if the request response is not ok', async () => {
             const mockedResponse = {ok: false, statusText: "Error occurred", parsedBody: undefined} as IHttpResponse<Array<{x: number, y: number}>>;
             setHttpServiceMock(mockedResponse);
+            let error = undefined;
 
-            // const result = await sut.getShops();
-            // await expect(result).rejects.toThrow();
+            try {
+                await sut.getShops();
+            }catch (e) {
+                error = e;
+            }
+
+            expect(error).not.toBeUndefined();
+            expect(error?.message).toEqual(mockedResponse.statusText);
         });
 
         it('should return empty array', async () => {

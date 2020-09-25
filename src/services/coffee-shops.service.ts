@@ -8,16 +8,12 @@ export class CoffeeShopsService {
 
         const token = securityService.getToken();
 
-        try {
-            const response = await httpService.get(`${HttpService.baseUrl}/v1/coffee_shops?token=${token}`);
+        const response = await httpService.get(`${HttpService.baseUrl}/v1/coffee_shops?token=${token}`);
 
-            if (!response.ok) {
-                throw Error(response.statusText);
-            }
-
-            return response.parsedBody as any[] || [];
-        } catch (error) {
-            console.error(error);
+        if (!response.ok) {
+            throw new Error(response.statusText);
         }
+
+        return response.parsedBody as any[] || [];
     }
 }

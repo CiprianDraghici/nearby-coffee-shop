@@ -22,10 +22,16 @@ describe("InitializeService", () => {
             const mockedResponse = {ok: false, statusText: "Error occurred", parsedBody: undefined} as IHttpResponse<{ token: string }>;
             setHttpServiceMock(mockedResponse);
 
-            // const result = await sut.init();
-            // await expect(result).rejects.toBeTruthy();
+            let error = undefined;
 
-            // await expect(sut.init()).rejects.toBeTruthy();
+            try {
+                await sut.init();
+            }catch (e) {
+                error = e;
+            }
+
+            expect(error).not.toBeUndefined();
+            expect(error?.message).toEqual(mockedResponse.statusText);
         });
 
         it('should not update localStorage and sessionStorage with a token if the request response.parsedBody does not exists', async () => {
