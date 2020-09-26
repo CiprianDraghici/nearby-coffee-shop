@@ -84,7 +84,7 @@ const XYChart: React.FC<XYChartProps> = (props) => {
     }
 
     return (
-        <div>
+        <div data-testid={"XY-Chart"}>
             <XYPlot
                 width={600}
                 height={600}

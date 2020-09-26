@@ -10,7 +10,7 @@ interface NearestCoffeeShopsProps {
 }
 
 const NearestCoffeeShops: React.FC<NearestCoffeeShopsProps> = (props) => {
-    const [remoteData, setRemoteData] = useState<any[]>([]);
+    const [remoteData, setRemoteData] = useState<any[] | null>(null);
     const [chartData, setChartData] = useState<any[]>([]);
     const [selectedDataPoint, setSelectedDataPoint] = useState<SeriesPoint | null>( null);
 
@@ -45,9 +45,10 @@ const NearestCoffeeShops: React.FC<NearestCoffeeShopsProps> = (props) => {
 
     useEffect(() => {
         const xyChartService: XYChartService = new XYChartService();
-        const result = xyChartService.getNearestPoints(props.userLocation, remoteData, 3);
+        const result = xyChartService.getNearestPoints(props.userLocation, remoteData || [], 3);
+
         setChartData(result.map(x => ({...x, label: x.name, size: 20, customComponent: "circle"})));
-    }, [props.userLocation, remoteData])
+    }, [props.userLocation, remoteData]);
 
     const getDataAsync = async () => {
         const coffeeShopsService: CoffeeShopsService = new CoffeeShopsService();
@@ -64,11 +65,19 @@ const NearestCoffeeShops: React.FC<NearestCoffeeShopsProps> = (props) => {
     }
 
     return (
-        <XYChart
-            data={[...chartData]}
-            userDataPoint={userDataPoint}
-            selectedDataPointCallback={onSelectedDataPoint}
-        />
+        <>
+            {
+                !remoteData && "Loading..."
+            }
+            {
+                remoteData &&
+                <XYChart
+                    data={[...chartData]}
+                    userDataPoint={userDataPoint}
+                    selectedDataPointCallback={onSelectedDataPoint}
+                />
+            }
+        </>
     )
 }
 
