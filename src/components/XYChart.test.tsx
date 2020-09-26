@@ -10,6 +10,12 @@ describe("XYChart component", () => {
         selectedDataPointCallback: jest.fn()
     }
 
+    it('renders correctly and avoid undesired regression', () => {
+        const component = render(<XYChart {...chartProps} />);
+
+        expect(component).toMatchSnapshot();
+    });
+
     it(`renders data series in DOM`, () => {
         const {container} = render(<XYChart {...chartProps} />);
 

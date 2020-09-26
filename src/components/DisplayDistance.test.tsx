@@ -11,6 +11,24 @@ jest.mock('../services/x-y-chart.service', () => {
 });
 
 describe("DisplayDistance component", () => {
+    it('renders correctly and avoid undesired regression', () => {
+        const selectedDataPoint = {x: 10, y: 11};
+        const userLocation = {x: 10, y: 11.05};
+        const component = render(<DisplayDistance selectedDataPoint={selectedDataPoint} userLocation={userLocation} />);
+
+        expect(component).toMatchSnapshot();
+    });
+
+    it(`renders text in DOM`, () => {
+        const selectedDataPoint = {x: 10, y: 11};
+        const userLocation = {x: 10, y: 11.05};
+
+        const {container} = render(<DisplayDistance selectedDataPoint={selectedDataPoint} userLocation={userLocation} />);
+        const textElement = container.querySelector(`text`);
+
+        expect(textElement).toBeInTheDocument();
+    });
+
     it(`renders text in DOM`, () => {
         const selectedDataPoint = {x: 10, y: 11};
         const userLocation = {x: 10, y: 11.05};

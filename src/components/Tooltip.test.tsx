@@ -9,6 +9,12 @@ describe("Tooltip component", () => {
         content: () => <span>"Tooltip text"</span>
     }
 
+    it('renders correctly and avoid undesired regression', () => {
+        const component = render(<Tooltip {...tooltipProps} />);
+
+        expect(component).toMatchSnapshot();
+    });
+
     it(`do not renders the content in DOM`, () => {
         const props = {
             ...tooltipProps,

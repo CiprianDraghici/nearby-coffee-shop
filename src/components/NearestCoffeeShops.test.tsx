@@ -1,4 +1,4 @@
-import {render, screen, waitForElement, waitFor, act, wait} from "@testing-library/react";
+import {render, screen, act} from "@testing-library/react";
 import React from "react";
 import NearestCoffeeShops from "./NearestCoffeeShops";
 import {HttpService} from "../services/http.service";
@@ -15,6 +15,12 @@ describe("NearestCoffeeShops component", () => {
             get: jest.fn().mockReturnValue(Promise.resolve(postMockedResponse))
         }));
     }
+
+    it('renders correctly and avoid undesired regression', () => {
+        const component = render(<NearestCoffeeShops {...props} />);
+
+        expect(component).toMatchSnapshot();
+    });
 
     it(`renders XYChart in DOM`, () => {
         const sut = render(<NearestCoffeeShops {...props} />);
