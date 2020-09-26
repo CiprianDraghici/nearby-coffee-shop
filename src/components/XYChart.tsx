@@ -61,11 +61,9 @@ const XYChart: React.FC<XYChartProps> = (props) => {
 
     const TooltipContent = () => {
         if(!tooltipPosition) { return <></>;}
-        console.log(tooltipPosition!.datapoint);
-        console.log(tooltipPosition);
 
         return (
-            <div>
+            <div data-testid={"tooltip-content"}>
                 <div style={{textAlign: "left"}}>{`Latitude: ${tooltipPosition!.datapoint.y}`}</div>
                 <div style={{textAlign: "left"}}>{`Longitude: ${tooltipPosition!.datapoint.x}`}</div>
             </div>
