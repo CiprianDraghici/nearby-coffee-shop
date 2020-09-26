@@ -26,7 +26,7 @@ describe("Tooltip component", () => {
         const textElement = container.querySelector(`span`);
 
         expect(textElement).toBeInTheDocument();
-        expect(textElement.innerHTML).toEqual(`"Tooltip text"`);
+        expect(textElement?.innerHTML).toEqual(`"Tooltip text"`);
     });
 
     it(`display the content in the correct top-left position`, () => {

@@ -2,7 +2,7 @@ import {HttpService, IHttpResponse} from "./http.service";
 import {InitializeService} from "./initialize.service";
 
 const setHttpServiceMock = (postMockedResponse: any) => {
-    return HttpService.getInstance = jest.fn().mockImplementation(() => ({
+    HttpService.getInstance = jest.fn().mockImplementation(() => ({
         HttpService: {
             getInstance: jest.fn().mockReturnThis()
         },

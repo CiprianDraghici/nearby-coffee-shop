@@ -28,8 +28,8 @@ describe("DisplayDistance component", () => {
         const component = render(<DisplayDistance selectedDataPoint={selectedDataPoint} userLocation={userLocation} />);
         const textElement = component.container.querySelector(`text`);
 
-        expect(textElement.children.length).toEqual(2);
-        expect(textElement.children[0].innerHTML).toEqual("Distance [m]: 10.12");
-        expect(textElement.children[1].innerHTML).toEqual("Distance [km]: 0.01");
+        expect(textElement?.children.length).toEqual(2);
+        expect(textElement?.children[0].innerHTML).toEqual("Distance [m]: 10.12");
+        expect(textElement?.children[1].innerHTML).toEqual("Distance [km]: 0.01");
     });
 });
