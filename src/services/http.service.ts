@@ -1,4 +1,3 @@
-import {SecurityService} from "./security.service";
 
 export interface IHttpResponse<T> extends Response {
     parsedBody?: T;
@@ -6,7 +5,7 @@ export interface IHttpResponse<T> extends Response {
 
 export class HttpService {
     private static instance: HttpService;
-    public static baseUrl: string = "https://blue-bottle-api-test.herokuapp.com";
+
     public static getInstance(): HttpService {
         if (!HttpService.instance) {
             HttpService.instance = new HttpService();
@@ -15,7 +14,9 @@ export class HttpService {
         return HttpService.instance;
     }
 
-    public securityService: SecurityService = new SecurityService();
+    public get baseUrl() {
+        return "https://blue-bottle-api-test.herokuapp.com";
+    }
 
     public get = async <T>(url: string, args: RequestInit = { method: "get" }): Promise<IHttpResponse<T>> => {
         args.headers = this.resolveHeaders(args.headers);

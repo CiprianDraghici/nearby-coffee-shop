@@ -5,22 +5,22 @@ import {
     HorizontalGridLines,
     XAxis,
     YAxis,
-    MarkSeriesPoint,
     CustomSVGSeries,
     MarkSeries,
     LabelSeries,
     DiscreteColorLegend
 } from "react-vis";
 import Tooltip from "./Tooltip";
+import {SeriesPoint} from "../services/x-y-chart.service";
 
 interface XYChartProps {
-    data: MarkSeriesPoint[];
-    userDataPoint: MarkSeriesPoint;
-    selectedDataPointCallback: (dataPoint: MarkSeriesPoint | null) => void;
+    data: SeriesPoint[];
+    userDataPoint: SeriesPoint;
+    selectedDataPointCallback: (dataPoint: SeriesPoint | null) => void;
 }
 
 const XYChart: React.FC<XYChartProps> = (props) => {
-    const [tooltipPosition, setTooltipPosition] = useState<{x: string | number, y: string | number, datapoint: MarkSeriesPoint} | null>( null);
+    const [tooltipPosition, setTooltipPosition] = useState<{x: string | number, y: string | number, datapoint: SeriesPoint} | null>( null);
 
     const onValueClick = (datapoint: any, e: any) => {
         e.event.stopPropagation();

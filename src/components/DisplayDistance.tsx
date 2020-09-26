@@ -1,10 +1,9 @@
 import React from 'react';
-import {XYChartService} from "../services/x-y-chart.service";
-import {MarkSeriesPoint} from "react-vis";
+import {SeriesPoint, XYChartService} from "../services/x-y-chart.service";
 
 interface DisplayDistanceInfoProps {
-    selectedDataPoint: MarkSeriesPoint | null;
-    userLocation: MarkSeriesPoint;
+    selectedDataPoint: SeriesPoint | null;
+    userLocation: SeriesPoint;
 }
 
 const DisplayDistance: React.FC<DisplayDistanceInfoProps> = (props) => {

@@ -1,10 +1,14 @@
 import {MarkSeriesPoint} from "react-vis";
 
+export interface SeriesPoint extends MarkSeriesPoint {
+
+}
+
 export class XYChartService {
     /**
      * @Reference: https://www.movable-type.co.uk/scripts/latlong.html
      */
-    public computeDistance = (point1: MarkSeriesPoint, point2: MarkSeriesPoint) => {
+    public computeDistance = (point1: SeriesPoint, point2: SeriesPoint) => {
         const lat1 = Number(point1.y);
         const lat2 = Number(point2.y);
         const lon1 = Number(point1.x);
@@ -24,7 +28,7 @@ export class XYChartService {
         return R * c;
     }
 
-    public getNearestPoints = (userLocation: MarkSeriesPoint, data: MarkSeriesPoint[], amount: number) => {
+    public getNearestPoints = (userLocation: SeriesPoint, data: SeriesPoint[], amount: number) => {
         if(data.length < amount) { return data; }
 
         const sorted = data.sort( (a, b) => {
@@ -32,6 +36,6 @@ export class XYChartService {
             const distance2 = this.computeDistance(userLocation, b);
             return distance1 - distance2;
         });
-        return sorted.slice(0, 3);
+        return sorted.slice(0, amount);
     }
 }

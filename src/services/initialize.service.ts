@@ -14,7 +14,7 @@ export class InitializeService {
     public async init() {
         const httpService = HttpService.getInstance();
 
-        const response = await httpService.post<{token: string}>(`${HttpService.baseUrl}/v1/tokens`);
+        const response = await httpService.post<{token: string}>(`${httpService.baseUrl}/v1/tokens`);
 
         if (!response.ok) {
             throw Error(response.statusText);
@@ -23,7 +23,6 @@ export class InitializeService {
         const result = response.parsedBody;
         if(!result || !result.token) { return; }
 
-        localStorage.accessToken = result.token;
-        sessionStorage.accessToken = localStorage.accessToken;
+        sessionStorage.accessToken = result.token;
     }
 }

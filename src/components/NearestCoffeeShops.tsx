@@ -1,19 +1,18 @@
 import React, {useEffect, useState} from "react";
-import {MarkSeriesPoint} from "react-vis";
-import {XYChartService} from "../services/x-y-chart.service";
+import {SeriesPoint, XYChartService} from "../services/x-y-chart.service";
 import XYChart from "./XYChart";
 import {CoffeeShopsService} from "../services/coffee-shops.service";
 import DisplayDistance from "./DisplayDistance";
 import {toast} from "react-toastify";
 
 interface NearestCoffeeShopsProps {
-    userLocation: MarkSeriesPoint;
+    userLocation: SeriesPoint;
 }
 
 const NearestCoffeeShops: React.FC<NearestCoffeeShopsProps> = (props) => {
     const [remoteData, setRemoteData] = useState<any[]>([]);
     const [chartData, setChartData] = useState<any[]>([]);
-    const [selectedDataPoint, setSelectedDataPoint] = useState< MarkSeriesPoint | null>( null);
+    const [selectedDataPoint, setSelectedDataPoint] = useState<SeriesPoint | null>( null);
 
     const userDataPoint = {
         id: 0,
@@ -36,7 +35,7 @@ const NearestCoffeeShops: React.FC<NearestCoffeeShopsProps> = (props) => {
         }
     };
 
-    const onSelectedDataPoint = (dataPoint: MarkSeriesPoint | null) => {
+    const onSelectedDataPoint = (dataPoint: SeriesPoint | null) => {
         setSelectedDataPoint(dataPoint);
     }
 
