@@ -8,7 +8,7 @@ export class CoffeeShopsService {
 
         const token = securityService.getToken();
 
-        const response = await httpService.get(`${HttpService.baseUrl}/v1/coffee_shops?token=${token}`);
+        const response = await httpService.get(`${httpService.baseUrl}/v1/coffee_shops?token=${token}`);
 
         if (!response.ok) {
             throw new Error(response.statusText);
