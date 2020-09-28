@@ -14,7 +14,7 @@ describe("DisplayDistance component", () => {
     it('renders component and prevent regression', () => {
         const selectedDataPoint = {x: 10, y: 11};
         const userLocation = {x: 10, y: 11.05};
-        
+
         const sut = render(<DisplayDistance selectedDataPoint={selectedDataPoint} userLocation={userLocation} />);
         const textElement = sut.container.querySelector(`text`);
 

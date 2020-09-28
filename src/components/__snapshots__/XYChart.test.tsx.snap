@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`XYChart component renders correctly and avoid undesired regression 1`] = `
+exports[`XYChart component renders the chart in DOM and prevent regression 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>

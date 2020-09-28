@@ -10,10 +10,11 @@ describe("XYChart component", () => {
         selectedDataPointCallback: jest.fn()
     }
 
-    it('renders correctly and avoid undesired regression', () => {
-        const component = render(<XYChart {...chartProps} />);
+    it('renders the chart in DOM and prevent regression', () => {
+        const sut = render(<XYChart {...chartProps} />);
 
-        expect(component).toMatchSnapshot();
+        expect(screen.getByTestId(/XY-Chart/)).toBeInTheDocument();
+        expect(sut).toMatchSnapshot();
     });
 
     it(`renders data series in DOM`, () => {
@@ -35,7 +36,7 @@ describe("XYChart component", () => {
     });
 
     describe("MarkSeries component", () => {
-        it(`display a tooltip text with the point coordinates on hover event and hide the tooltip on unhover`, () => {
+        it(`display a tooltip text with the point coordinates hovering mouse cursor over the point and hide the tooltip when the point hover is lost`, () => {
             const {container} = render(<XYChart {...chartProps} />);
             const pointIndex = 1;
             const seriesContainer = container.querySelector(`g.mark-series-overrides`) as SVGGElement;
@@ -52,7 +53,7 @@ describe("XYChart component", () => {
             expect(screen.queryByTestId("tooltip-content")).not.toBeInTheDocument();
         })
 
-        it(`call props.selectedDataPointCallback on value click`, () => {
+        it(`pass the selected point to the parent clicking on a plotted point`, () => {
             const {container} = render(<XYChart {...chartProps} />);
             const pointIndex = 1;
             const seriesContainer = container.querySelector(`g.mark-series-overrides`) as SVGGElement;
@@ -66,7 +67,7 @@ describe("XYChart component", () => {
     });
 
     describe("CustomSVGSeries component", () => {
-        it(`display a tooltip text with the point coordinates on hover event and hide the tooltip on unhover`, () => {
+        it(`display a tooltip text with the point coordinates hovering mouse cursor over the point and hide the tooltip when the point hover is lost`, () => {
             const {container} = render(<XYChart {...chartProps} />);
             const userSeriesContainer = container.querySelector(`g.custom-svg-series-anchor`) as SVGGElement;
             userSeriesContainer.getBBox = () => chartProps.data[0] as any;
