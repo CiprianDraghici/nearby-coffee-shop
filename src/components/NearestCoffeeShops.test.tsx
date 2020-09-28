@@ -34,7 +34,7 @@ describe("NearestCoffeeShops component", () => {
     })
 
     it("renders XYChart and plot the data", async () => {
-        const fakeResponse = {ok: true, statusText: "Done", parsedBody: [{id: 1, x: 10, y: 11, name: "test", label: "test"}]};
+        const fakeResponse = {ok: true, statusText: "Done", parsedBody: [{id: 1, x: 10, y: 11, name: "test", label: "test"}], status: 200};
         setHttpServiceMock(fakeResponse);
 
         await act(async () => {

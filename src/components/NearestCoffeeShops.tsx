@@ -3,16 +3,17 @@ import {SeriesPoint, XYChartService} from "../services/x-y-chart.service";
 import XYChart from "./XYChart";
 import {CoffeeShopsService} from "../services/coffee-shops.service";
 import DisplayDistance from "./DisplayDistance";
-import {toast} from "react-toastify";
+import {CoffeeShopModel} from "../models/coffee-shop.model";
 
 interface NearestCoffeeShopsProps {
     userLocation: SeriesPoint;
 }
 
 const NearestCoffeeShops: React.FC<NearestCoffeeShopsProps> = (props) => {
-    const [remoteData, setRemoteData] = useState<any[] | null>(null);
+    const [remoteData, setRemoteData] = useState<CoffeeShopModel[] | null>(null);
     const [chartData, setChartData] = useState<any[]>([]);
     const [selectedDataPoint, setSelectedDataPoint] = useState<SeriesPoint | null>( null);
+    const [error, setError] = useState<string | null>(null);
 
     const userDataPoint = {
         id: 0,
@@ -55,22 +56,27 @@ const NearestCoffeeShops: React.FC<NearestCoffeeShopsProps> = (props) => {
 
         try {
             const result = await coffeeShopsService.getShops();
-            if(!result) { return; }
+            if(!result) {
+                setError("The screen can not be displayed. Reason: No data.");
+                return;
+            }
 
             setRemoteData(result.map(p => ({...p, x: Number(p.x), y: Number(p.y)})));
         } catch (err) {
-            console.error(err);
-            toast.error(err.message);
+            setError(`The screen can not be displayed. Reason: ${err.message}.`);
         }
     }
 
     return (
         <>
             {
-                !remoteData && "Loading..."
+                error
             }
             {
-                remoteData &&
+                !remoteData && !error && "Loading..."
+            }
+            {
+                remoteData && !error &&
                 <XYChart
                     data={[...chartData]}
                     userDataPoint={userDataPoint}

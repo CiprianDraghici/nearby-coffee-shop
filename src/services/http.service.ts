@@ -1,3 +1,4 @@
+import {toast} from "react-toastify";
 
 export interface IHttpResponse<T> extends Response {
     parsedBody?: T;
@@ -34,6 +35,38 @@ export class HttpService {
 
     public resolveUrl(url: string) {
         return encodeURI(url);
+    }
+
+    public handleRejection<T>(response: IHttpResponse<T>) {
+        let message =  "Unknown issue";
+        switch (response.status) {
+            case 401: {
+                message = "Unauthorized"
+                toast.error(message);
+                break;
+            }
+            case 406: {
+                message = "Unacceptable Accept format";
+                toast.error(message);
+                break;
+            }
+            case 503: {
+                message = "Service Unavailable";
+                toast.error(message);
+                break;
+            }
+            case 504: {
+                message = "Timeout";
+                toast.error(message);
+                break;
+            }
+            default: {
+                message = "Unknown issue";
+                toast.error(message);
+            }
+        }
+
+        throw new Error(message);
     }
 
     private http = <T>(request: RequestInfo): Promise<IHttpResponse<T> | void> => {

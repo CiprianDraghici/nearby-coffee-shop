@@ -1,5 +1,6 @@
 import {HttpService} from "./http.service";
 import {SecurityService} from "./security.service";
+import {CoffeeShopModel} from "../models/coffee-shop.model";
 
 export class CoffeeShopsService {
     public async getShops() {
@@ -8,12 +9,16 @@ export class CoffeeShopsService {
 
         const token = securityService.getToken();
 
-        const response = await httpService.get(`${httpService.baseUrl}/v1/coffee_shops?token=${token}`);
+        try {
+            const response = await httpService.get<CoffeeShopModel[]>(`${httpService.baseUrl}/v1/coffee_shops?token=${token}`);
 
-        if (!response.ok) {
-            throw new Error(response.statusText);
+            if (response.status !== 200) {
+                httpService.handleRejection(response);
+            }
+
+            return response.parsedBody as any[] || [];
+        } catch (err) {
+            httpService.handleRejection(err);
         }
-
-        return response.parsedBody as any[] || [];
     }
 }

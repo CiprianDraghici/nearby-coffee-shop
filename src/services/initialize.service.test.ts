@@ -1,12 +1,15 @@
 import {HttpService, IHttpResponse} from "./http.service";
 import {InitializeService} from "./initialize.service";
 
-const setHttpServiceMock = (postMockedResponse: any) => {
+const setHttpServiceMock = (mockedResponse: any, errorMessage?: string) => {
     HttpService.getInstance = jest.fn().mockImplementation(() => ({
         HttpService: {
             getInstance: jest.fn().mockReturnThis()
         },
-        post: jest.fn().mockReturnValue(Promise.resolve(postMockedResponse))
+        post: jest.fn().mockReturnValue(Promise.resolve(mockedResponse)),
+        handleRejection: jest.fn().mockImplementation(() => {
+            throw new Error(errorMessage || "Generic error message");
+        })
     }));
 }
 
@@ -20,7 +23,7 @@ describe("InitializeService", () => {
     describe(`"init" method`, () => {
         it('should thrown error if the request response is not ok', async () => {
             const mockedResponse = {ok: false, statusText: "Error occurred", parsedBody: undefined} as IHttpResponse<{ token: string }>;
-            setHttpServiceMock(mockedResponse);
+            setHttpServiceMock(mockedResponse, mockedResponse.statusText);
 
             let error = undefined;
 
