@@ -40,10 +40,12 @@ describe("NearestCoffeeShops component", () => {
         expect(screen.queryByTestId("XY-Chart")).not.toBeInTheDocument();
     });
 
-    it(`displays text "Loading..." while fetching the data`, () => {
+    it(`displays text "Loading..." while fetching the data`, async () => {
         const { getByText } = render(<NearestCoffeeShops {...props} />);
 
-        expect(getByText("Loading...")).toBeTruthy();
+        await act(async () => {
+            expect(getByText("Loading...")).toBeTruthy();
+        })
     })
 
     it("renders XYChart and plot the data", async () => {
