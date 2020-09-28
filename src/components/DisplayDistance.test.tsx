@@ -11,35 +11,18 @@ jest.mock('../services/x-y-chart.service', () => {
 });
 
 describe("DisplayDistance component", () => {
-    it('renders correctly and avoid undesired regression', () => {
+    it('renders component and prevent regression', () => {
         const selectedDataPoint = {x: 10, y: 11};
         const userLocation = {x: 10, y: 11.05};
-        const component = render(<DisplayDistance selectedDataPoint={selectedDataPoint} userLocation={userLocation} />);
-
-        expect(component).toMatchSnapshot();
-    });
-
-    it(`renders text in DOM`, () => {
-        const selectedDataPoint = {x: 10, y: 11};
-        const userLocation = {x: 10, y: 11.05};
-
-        const {container} = render(<DisplayDistance selectedDataPoint={selectedDataPoint} userLocation={userLocation} />);
-        const textElement = container.querySelector(`text`);
+        
+        const sut = render(<DisplayDistance selectedDataPoint={selectedDataPoint} userLocation={userLocation} />);
+        const textElement = sut.container.querySelector(`text`);
 
         expect(textElement).toBeInTheDocument();
+        expect(sut).toMatchSnapshot();
     });
 
-    it(`renders text in DOM`, () => {
-        const selectedDataPoint = {x: 10, y: 11};
-        const userLocation = {x: 10, y: 11.05};
-
-        const {container} = render(<DisplayDistance selectedDataPoint={selectedDataPoint} userLocation={userLocation} />);
-        const textElement = container.querySelector(`text`);
-
-        expect(textElement).toBeInTheDocument();
-    });
-
-    it(`renders text with the distance in meters and km`, () => {
+    it(`renders text containing the distance in meters and km`, () => {
         const selectedDataPoint = {x: 10, y: 11};
         const userLocation = {x: 10, y: 11.05};
 

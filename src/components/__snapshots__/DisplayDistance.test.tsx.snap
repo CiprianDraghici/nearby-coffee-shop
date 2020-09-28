@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DisplayDistance component renders correctly and avoid undesired regression 1`] = `
+exports[`DisplayDistance component renders component and prevent regression 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
