@@ -69,25 +69,20 @@ export class HttpService {
         throw new Error(message);
     }
 
-    private http = <T>(request: RequestInfo): Promise<IHttpResponse<T> | void> => {
-        return new Promise((resolve, reject) => {
-            let response: IHttpResponse<T>;
-            fetch(request)
-                .then(res => {
-                    response = res;
-                    return this.parseJSON(response);
-                })
-                .then(body => {
-                    if (response.ok) {
-                        response.parsedBody = body;
-                        resolve(response);
-                    } else {
-                        reject(response);
-                    }
-                })
-                .catch(err => {
-                    reject(err);
-                });
+    private http = async <T>(request: RequestInfo): Promise<IHttpResponse<T> | void> => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const response: IHttpResponse<T> = await fetch(request);
+
+                if (response.ok) {
+                    response.parsedBody = await this.parseJSON(response);
+                    return resolve(response);
+                } else {
+                    return reject(response);
+                }
+            } catch (err) {
+                return reject(err);
+            }
         });
     };
 
