@@ -7,27 +7,40 @@ describe("NearestCoffeeShops component", () => {
     const props = {
         userLocation: { x: 9, y: 9 },
     }
-    const setHttpServiceMock = (postMockedResponse: any) => {
+    const setHttpServiceMock = (mockedResponse: any, errorMessage?: string) => {
         HttpService.getInstance = jest.fn().mockImplementation(() => ({
             HttpService: {
                 getInstance: jest.fn().mockReturnThis()
             },
-            get: jest.fn().mockReturnValue(Promise.resolve(postMockedResponse))
+            get: jest.fn().mockReturnValue(Promise.resolve(mockedResponse)),
+            handleRejection: jest.fn().mockImplementation(() => {
+                throw new Error(errorMessage || "Generic error message");
+            })
         }));
     }
 
-    it('renders correctly and avoid undesired regression', () => {
-        const component = render(<NearestCoffeeShops {...props} />);
-
-        expect(component).toMatchSnapshot();
-    });
-
-    it(`renders XYChart in DOM`, () => {
+    it('renders XYChart in DOM and prevent regression', () => {
         const sut = render(<NearestCoffeeShops {...props} />);
+
+        expect(sut).toMatchSnapshot();
         expect(sut).toBeDefined();
     });
 
-    it(`displays text "Loading..." while fetching coffee shops`, () => {
+    it("renders an error message if something wrong happening fetching the data", async () => {
+        const fakeResponse = {ok: false, statusText: "Unauthorized", parsedBody: undefined, status: 401};
+        setHttpServiceMock(fakeResponse, fakeResponse.statusText);
+
+        await act(async () => {
+            render(<NearestCoffeeShops {...props} />);
+            expect(screen.queryByText("Loading...")).toBeTruthy();
+        });
+
+        expect(screen.queryByText(`The screen can not be displayed. Reason: ${fakeResponse.statusText}.`)).toBeInTheDocument();
+        expect(screen.queryByText("Loading...")).toBeFalsy();
+        expect(screen.queryByTestId("XY-Chart")).not.toBeInTheDocument();
+    });
+
+    it(`displays text "Loading..." while fetching the data`, () => {
         const { getByText } = render(<NearestCoffeeShops {...props} />);
 
         expect(getByText("Loading...")).toBeTruthy();
@@ -45,4 +58,6 @@ describe("NearestCoffeeShops component", () => {
         expect(screen.queryByText("Loading...")).toBeFalsy();
         expect(screen.queryByTestId("XY-Chart")).toBeInTheDocument();
     });
+
+
 });

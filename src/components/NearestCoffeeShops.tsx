@@ -56,12 +56,7 @@ const NearestCoffeeShops: React.FC<NearestCoffeeShopsProps> = (props) => {
 
         try {
             const result = await coffeeShopsService.getShops();
-            if(!result) {
-                setError("The screen can not be displayed. Reason: No data.");
-                return;
-            }
-
-            setRemoteData(result.map(p => ({...p, x: Number(p.x), y: Number(p.y)})));
+            setRemoteData(result!.map(p => ({...p, x: Number(p.x), y: Number(p.y)})));
         } catch (err) {
             setError(`The screen can not be displayed. Reason: ${err.message}.`);
         }
