@@ -9,28 +9,11 @@ describe("Tooltip component", () => {
         content: () => <span>"Tooltip text"</span>
     }
 
-    it('renders correctly and avoid undesired regression', () => {
-        const component = render(<Tooltip {...tooltipProps} />);
+    it('renders tooltip content in DOM and prevent regression', () => {
+        const sut = render(<Tooltip {...tooltipProps} />);
+        const textElement = sut.container.querySelector(`span`);
 
-        expect(component).toMatchSnapshot();
-    });
-
-    it(`do not renders the content in DOM`, () => {
-        const props = {
-            ...tooltipProps,
-            show: false,
-        }
-
-        const {container} = render(<Tooltip {...props} />);
-        const textElement = container.querySelector(`span`);
-
-        expect(textElement).not.toBeInTheDocument();
-    });
-
-    it(`renders the content in DOM`, () => {
-        const {container} = render(<Tooltip {...tooltipProps} />);
-        const textElement = container.querySelector(`span`);
-
+        expect(sut).toMatchSnapshot();
         expect(textElement).toBeInTheDocument();
         expect(textElement?.innerHTML).toEqual(`"Tooltip text"`);
     });
@@ -43,5 +26,17 @@ describe("Tooltip component", () => {
         expect(containerStyle.position).toEqual(`absolute`);
         expect(containerStyle.left).toEqual(`${tooltipProps.position.x}px`);
         expect(containerStyle.top).toEqual(`${tooltipProps.position.y}px`);
+    });
+
+    it(`do not renders the tooltip content since the component visibility do not permit this`, () => {
+        const props = {
+            ...tooltipProps,
+            show: false,
+        }
+
+        const {container} = render(<Tooltip {...props} />);
+        const textElement = container.querySelector(`span`);
+
+        expect(textElement).not.toBeInTheDocument();
     });
 });

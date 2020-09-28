@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tooltip component renders correctly and avoid undesired regression 1`] = `
+exports[`Tooltip component renders tooltip content in DOM and prevent regression 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
