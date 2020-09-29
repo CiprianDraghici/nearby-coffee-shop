@@ -93,10 +93,9 @@ const XYChart: React.FC<XYChartProps> = (props) => {
                 />
                 <LabelSeries allowOffsetToBeReversed={true} data={[...props.data, props.userDataPoint] as any[]} />
                 <CustomSVGSeries className={"custom-svg-series-anchor"} data={[props.userDataPoint] as any[]} onValueMouseOver={onUserMouseOver} onValueMouseOut={onValueMouseOut} />
-
-                {props.children}
             </XYPlot>
             <DiscreteColorLegend items={getLegend()} orientation={"horizontal"} />
+            {props.children}
         </div>
     )
 }

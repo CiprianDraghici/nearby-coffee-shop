@@ -1,16 +1,28 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Tooltip from "./Tooltip";
 import {SeriesPoint} from "../services/x-y-chart.service";
 import XYChart from "./XYChart";
 
-interface XYChartProps {
+interface ChartProps {
     data: SeriesPoint[];
     userDataPoint: SeriesPoint;
     selectedDataPointCallback: (dataPoint: SeriesPoint | null) => void;
+    chartType?: "XY";
 }
 
-const Chart: React.FC<XYChartProps> = (props) => {
-    const [tooltipPosition, setTooltipPosition] = useState<{x: string | number, y: string | number, datapoint: SeriesPoint} | null>( null);
+interface TooltipPosition {
+    x: string | number;
+    y: string | number;
+    datapoint: SeriesPoint;
+}
+
+const Chart: React.FC<ChartProps> = (props) => {
+    const [chartType, setChartType] = useState(props.chartType || "XY");
+    const [tooltipPosition, setTooltipPosition] = useState<TooltipPosition | null>( null);
+
+    useEffect(() => {
+        setChartType(props.chartType || "XY");
+    }, [props.chartType])
 
     const onValueClick = (datapoint: SeriesPoint | null) => {
         props.selectedDataPointCallback(datapoint);
@@ -18,8 +30,8 @@ const Chart: React.FC<XYChartProps> = (props) => {
 
     const onValueMouseOver = (datapoint: any, targetElement: SVGGraphicsElement) => {
         setTooltipPosition({
-            x: targetElement.getBBox().x + 50,
-            y: targetElement.getBBox().y + 30,
+            x: targetElement.getBoundingClientRect().x + 20,
+            y: targetElement.getBoundingClientRect().y + 20,
             datapoint
         });
     }
@@ -42,11 +54,17 @@ const Chart: React.FC<XYChartProps> = (props) => {
     }
 
     return (
-        <div data-testid={"Chart"}>
-            <XYChart data={props.data} userDataPoint={props.userDataPoint} onValueClickCallback={onValueClick} onValueMouseOverCallback={onValueMouseOver} onValueMouseOutCallback={onValueMouseOut}>
-                <Tooltip show={!!tooltipPosition} position={{...tooltipPosition!}} content={TooltipContent} />
-            </XYChart>
-        </div>
+        <>
+            {
+                chartType === "XY" &&
+                <XYChart data={props.data} userDataPoint={props.userDataPoint} onValueClickCallback={onValueClick} onValueMouseOverCallback={onValueMouseOver} onValueMouseOutCallback={onValueMouseOut}>
+                    <Tooltip show={!!tooltipPosition} position={{...tooltipPosition!}} content={TooltipContent} />
+                </XYChart>
+            }
+            {
+                chartType !== "XY" && "Unsupported chart type."
+            }
+        </>
     )
 }
 

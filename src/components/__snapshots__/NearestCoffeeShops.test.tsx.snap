@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NearestCoffeeShops component renders XYChart in DOM and prevent regression 1`] = `
+exports[`NearestCoffeeShops component renders Chart in DOM and prevent regression 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
