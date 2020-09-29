@@ -1,8 +1,8 @@
 export interface CoffeeShopModel {
     id: number;
-    created_at: string;
-    updated_at: string;
+    x: number | string | Date;
+    y: number | string | Date;
     name: string;
-    x: number | string;
-    y: number | string;
+    created_at?: string;
+    updated_at?: string;
 }

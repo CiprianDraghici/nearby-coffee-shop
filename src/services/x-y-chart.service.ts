@@ -1,4 +1,5 @@
 import {MarkSeriesPoint} from "react-vis";
+import {DataPointModel} from "../models/data-point.model";
 
 export interface SeriesPoint extends MarkSeriesPoint {
 
@@ -28,12 +29,12 @@ export class XYChartService {
         return R * c;
     }
 
-    public getNearestPoints = (userLocation: SeriesPoint, data: SeriesPoint[], amount: number) => {
+    public getNearestPoints = (userPoint: SeriesPoint, data: DataPointModel[], amount: number) => {
         if(data.length < amount) { return data; }
 
         const sorted = data.sort( (a, b) => {
-            const distance1 = this.computeDistance(userLocation, a);
-            const distance2 = this.computeDistance(userLocation, b);
+            const distance1 = this.computeDistance(userPoint, a);
+            const distance2 = this.computeDistance(userPoint, b);
             return distance1 - distance2;
         });
         return sorted.slice(0, amount);

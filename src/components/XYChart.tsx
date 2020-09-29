@@ -6,15 +6,13 @@ import {
     XAxis,
     YAxis,
     CustomSVGSeries,
-    MarkSeries,
     LabelSeries,
-    DiscreteColorLegend
+    DiscreteColorLegend, MarkSeries
 } from "react-vis";
 import {SeriesPoint} from "../services/x-y-chart.service";
 
 interface XYChartProps {
     data: SeriesPoint[];
-    userDataPoint: SeriesPoint;
 
     onValueMouseOverCallback?: (dataPoint: SeriesPoint, target: SVGGraphicsElement) => void;
     onValueMouseOutCallback?: (e: any) => void;
@@ -22,6 +20,7 @@ interface XYChartProps {
 }
 
 const XYChart: React.FC<XYChartProps> = (props) => {
+
     const onValueClick = (datapoint: SeriesPoint, e: any) => {
         e.event.stopPropagation();
 
@@ -35,7 +34,6 @@ const XYChart: React.FC<XYChartProps> = (props) => {
         if(!props.onValueMouseOverCallback) { return; }
         props.onValueMouseOverCallback(datapoint, e.event.target);
     }
-
     const onUserMouseOver = (datapoint: SeriesPoint, e: any) => {
         e.event.stopPropagation();
 
@@ -45,6 +43,7 @@ const XYChart: React.FC<XYChartProps> = (props) => {
         if(!props.onValueMouseOverCallback) { return; }
         props.onValueMouseOverCallback(datapoint, customSvgSeries);
     }
+
 
     const onValueMouseOut = (datapoint: SeriesPoint, e: any) => {
         e.event.stopPropagation();
@@ -86,13 +85,13 @@ const XYChart: React.FC<XYChartProps> = (props) => {
 
                 <MarkSeries
                     className="mark-series-overrides"
-                    data={props.data}
+                    data={props.data.filter(x => x.id !== 0)}
                     onValueClick={onValueClick}
                     onValueMouseOver={onValueMouseOver}
                     onValueMouseOut={onValueMouseOut}
                 />
-                <LabelSeries allowOffsetToBeReversed={true} data={[...props.data, props.userDataPoint] as any[]} />
-                <CustomSVGSeries className={"custom-svg-series-anchor"} data={[props.userDataPoint] as any[]} onValueMouseOver={onUserMouseOver} onValueMouseOut={onValueMouseOut} />
+                <LabelSeries allowOffsetToBeReversed={true} data={props.data as any[]} />
+                <CustomSVGSeries className={"custom-svg-series-anchor"} data={props.data.filter(x => x.id === 0) as any[]} onValueMouseOver={onUserMouseOver} onValueMouseOut={onValueMouseOut} />
             </XYPlot>
             <DiscreteColorLegend items={getLegend()} orientation={"horizontal"} />
             {props.children}
