@@ -7,7 +7,7 @@ interface ChartProps {
     data: SeriesPoint[];
     userDataPoint: SeriesPoint;
     selectedDataPointCallback: (dataPoint: SeriesPoint | null) => void;
-    chartType?: "XY";
+    chartType?: "XY" | "Bar" | "Arc";
 }
 
 interface TooltipPosition {
@@ -17,12 +17,7 @@ interface TooltipPosition {
 }
 
 const Chart: React.FC<ChartProps> = (props) => {
-    const [chartType, setChartType] = useState(props.chartType || "XY");
     const [tooltipPosition, setTooltipPosition] = useState<TooltipPosition | null>( null);
-
-    useEffect(() => {
-        setChartType(props.chartType || "XY");
-    }, [props.chartType])
 
     const onValueClick = (datapoint: SeriesPoint | null) => {
         props.selectedDataPointCallback(datapoint);
@@ -54,17 +49,11 @@ const Chart: React.FC<ChartProps> = (props) => {
     }
 
     return (
-        <>
-            {
-                chartType === "XY" &&
-                <XYChart data={props.data} userDataPoint={props.userDataPoint} onValueClickCallback={onValueClick} onValueMouseOverCallback={onValueMouseOver} onValueMouseOutCallback={onValueMouseOut}>
-                    <Tooltip show={!!tooltipPosition} position={{...tooltipPosition!}} content={TooltipContent} />
-                </XYChart>
-            }
-            {
-                chartType !== "XY" && "Unsupported chart type."
-            }
-        </>
+        <div data-testid={"Chart"}>
+            <XYChart data={props.data} userDataPoint={props.userDataPoint} onValueClickCallback={onValueClick} onValueMouseOverCallback={onValueMouseOver} onValueMouseOutCallback={onValueMouseOut}>
+                <Tooltip show={!!tooltipPosition} position={{...tooltipPosition!}} content={TooltipContent} />
+            </XYChart>
+        </div>
     )
 }
 
