@@ -5,8 +5,7 @@ import userEvent from "@testing-library/user-event";
 
 describe("Chart component", () => {
     const chartProps = {
-        data: [ {id: 1, name: "cs1", label: "cs1", x: 10, y: 11}, {id: 2, name: "cs2", label: "cs2", x: 10, y: 12}, {id: 3, name: "cs3", label: "cs3", x: 10, y: 13} ],
-        userDataPoint: { id: 1, name: "cs1", label: "cs1", x: 9, y: 9 },
+        data: [ { id: 0, name: "user", label: "user", x: 9, y: 9 }, {id: 1, name: "cs1", label: "cs1", x: 10, y: 11}, {id: 2, name: "cs2", label: "cs2", x: 10, y: 12}, {id: 3, name: "cs3", label: "cs3", x: 10, y: 13} ],
         selectedDataPointCallback: jest.fn()
     }
 
@@ -27,8 +26,8 @@ describe("Chart component", () => {
         userEvent.hover(seriesElement);
 
         expect(screen.getByTestId("tooltip-content")).toBeInTheDocument();
-        expect(screen.getByTestId("tooltip-content").children[0].innerHTML).toEqual(`Latitude: ${chartProps.data[pointIndex].y}`);
-        expect(screen.getByTestId("tooltip-content").children[1].innerHTML).toEqual(`Longitude: ${chartProps.data[pointIndex].x}`);
+        expect(screen.getByTestId("tooltip-content").children[0].innerHTML).toEqual(`Latitude: ${chartProps.data[pointIndex + 1].y}`);
+        expect(screen.getByTestId("tooltip-content").children[1].innerHTML).toEqual(`Longitude: ${chartProps.data[pointIndex + 1].x}`);
 
         userEvent.unhover(seriesElement);
         expect(screen.queryByTestId("tooltip-content")).not.toBeInTheDocument();
@@ -43,8 +42,8 @@ describe("Chart component", () => {
         userEvent.hover(userSeriesElement);
 
         expect(screen.getByTestId("tooltip-content")).toBeInTheDocument();
-        expect(screen.getByTestId("tooltip-content").children[0].innerHTML).toEqual(`Latitude: ${chartProps.userDataPoint.y}`);
-        expect(screen.getByTestId("tooltip-content").children[1].innerHTML).toEqual(`Longitude: ${chartProps.userDataPoint.x}`);
+        expect(screen.getByTestId("tooltip-content").children[0].innerHTML).toEqual(`Latitude: ${chartProps.data[0].y}`);
+        expect(screen.getByTestId("tooltip-content").children[1].innerHTML).toEqual(`Longitude: ${chartProps.data[0].x}`);
 
         userEvent.unhover(userSeriesElement);
         expect(screen.queryByTestId("tooltip-content")).not.toBeInTheDocument();

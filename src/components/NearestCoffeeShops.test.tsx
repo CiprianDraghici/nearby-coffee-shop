@@ -2,10 +2,11 @@ import {render, screen, act} from "@testing-library/react";
 import React from "react";
 import NearestCoffeeShops from "./NearestCoffeeShops";
 import {HttpService} from "../services/http.service";
+import {UserGeolocation} from "../hooks/useGeolocation";
 
 describe("NearestCoffeeShops component", () => {
     const props = {
-        userLocation: { x: 9, y: 9 },
+        userGeoLocation: { longitude: 9, latitude: 9 } as UserGeolocation,
     }
     const setHttpServiceMock = (mockedResponse: any, errorMessage?: string) => {
         HttpService.getInstance = jest.fn().mockImplementation(() => ({

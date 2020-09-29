@@ -34,29 +34,29 @@ Object {
                 />
                 <line
                   class="rv-xy-plot__grid-lines__line"
-                  x1="54.9999999999998"
-                  x2="54.9999999999998"
+                  x1="55"
+                  x2="55"
                   y1="0"
                   y2="550"
                 />
                 <line
                   class="rv-xy-plot__grid-lines__line"
-                  x1="109.9999999999996"
-                  x2="109.9999999999996"
+                  x1="110"
+                  x2="110"
                   y1="0"
                   y2="550"
                 />
                 <line
                   class="rv-xy-plot__grid-lines__line"
-                  x1="165.0000000000004"
-                  x2="165.0000000000004"
+                  x1="165"
+                  x2="165"
                   y1="0"
                   y2="550"
                 />
                 <line
                   class="rv-xy-plot__grid-lines__line"
-                  x1="220.0000000000002"
-                  x2="220.0000000000002"
+                  x1="220"
+                  x2="220"
                   y1="0"
                   y2="550"
                 />
@@ -69,29 +69,29 @@ Object {
                 />
                 <line
                   class="rv-xy-plot__grid-lines__line"
-                  x1="329.99999999999983"
-                  x2="329.99999999999983"
+                  x1="330"
+                  x2="330"
                   y1="0"
                   y2="550"
                 />
                 <line
                   class="rv-xy-plot__grid-lines__line"
-                  x1="384.9999999999996"
-                  x2="384.9999999999996"
+                  x1="385"
+                  x2="385"
                   y1="0"
                   y2="550"
                 />
                 <line
                   class="rv-xy-plot__grid-lines__line"
-                  x1="440.0000000000004"
-                  x2="440.0000000000004"
+                  x1="440"
+                  x2="440"
                   y1="0"
                   y2="550"
                 />
                 <line
                   class="rv-xy-plot__grid-lines__line"
-                  x1="495.00000000000017"
-                  x2="495.00000000000017"
+                  x1="495"
+                  x2="495"
                   y1="0"
                   y2="550"
                 />
@@ -118,50 +118,85 @@ Object {
                   class="rv-xy-plot__grid-lines__line"
                   x1="0"
                   x2="550"
-                  y1="481.25"
-                  y2="481.25"
+                  y1="507.69230769230774"
+                  y2="507.69230769230774"
                 />
                 <line
                   class="rv-xy-plot__grid-lines__line"
                   x1="0"
                   x2="550"
-                  y1="412.5"
-                  y2="412.5"
+                  y1="465.38461538461536"
+                  y2="465.38461538461536"
                 />
                 <line
                   class="rv-xy-plot__grid-lines__line"
                   x1="0"
                   x2="550"
-                  y1="343.75"
-                  y2="343.75"
+                  y1="423.07692307692304"
+                  y2="423.07692307692304"
                 />
                 <line
                   class="rv-xy-plot__grid-lines__line"
                   x1="0"
                   x2="550"
-                  y1="275"
-                  y2="275"
+                  y1="380.7692307692308"
+                  y2="380.7692307692308"
                 />
                 <line
                   class="rv-xy-plot__grid-lines__line"
                   x1="0"
                   x2="550"
-                  y1="206.25"
-                  y2="206.25"
+                  y1="338.46153846153845"
+                  y2="338.46153846153845"
                 />
                 <line
                   class="rv-xy-plot__grid-lines__line"
                   x1="0"
                   x2="550"
-                  y1="137.5"
-                  y2="137.5"
+                  y1="296.15384615384613"
+                  y2="296.15384615384613"
                 />
                 <line
                   class="rv-xy-plot__grid-lines__line"
                   x1="0"
                   x2="550"
-                  y1="68.75"
-                  y2="68.75"
+                  y1="253.84615384615387"
+                  y2="253.84615384615387"
+                />
+                <line
+                  class="rv-xy-plot__grid-lines__line"
+                  x1="0"
+                  x2="550"
+                  y1="211.53846153846152"
+                  y2="211.53846153846152"
+                />
+                <line
+                  class="rv-xy-plot__grid-lines__line"
+                  x1="0"
+                  x2="550"
+                  y1="169.23076923076923"
+                  y2="169.23076923076923"
+                />
+                <line
+                  class="rv-xy-plot__grid-lines__line"
+                  x1="0"
+                  x2="550"
+                  y1="126.9230769230769"
+                  y2="126.9230769230769"
+                />
+                <line
+                  class="rv-xy-plot__grid-lines__line"
+                  x1="0"
+                  x2="550"
+                  y1="84.61538461538461"
+                  y2="84.61538461538461"
+                />
+                <line
+                  class="rv-xy-plot__grid-lines__line"
+                  x1="0"
+                  x2="550"
+                  y1="42.30769230769228"
+                  y2="42.30769230769228"
                 />
                 <line
                   class="rv-xy-plot__grid-lines__line"
@@ -203,12 +238,12 @@ Object {
                       text-anchor="middle"
                       transform="translate(0, 14)"
                     >
-                      9.0
+                      0
                     </text>
                   </g>
                   <g
                     class="rv-xy-plot__axis__tick"
-                    transform="translate(54.9999999999998, 0)"
+                    transform="translate(55, 0)"
                   >
                     <line
                       class="rv-xy-plot__axis__tick__line"
@@ -223,12 +258,12 @@ Object {
                       text-anchor="middle"
                       transform="translate(0, 14)"
                     >
-                      9.1
+                      1
                     </text>
                   </g>
                   <g
                     class="rv-xy-plot__axis__tick"
-                    transform="translate(109.9999999999996, 0)"
+                    transform="translate(110, 0)"
                   >
                     <line
                       class="rv-xy-plot__axis__tick__line"
@@ -243,12 +278,12 @@ Object {
                       text-anchor="middle"
                       transform="translate(0, 14)"
                     >
-                      9.2
+                      2
                     </text>
                   </g>
                   <g
                     class="rv-xy-plot__axis__tick"
-                    transform="translate(165.0000000000004, 0)"
+                    transform="translate(165, 0)"
                   >
                     <line
                       class="rv-xy-plot__axis__tick__line"
@@ -263,12 +298,12 @@ Object {
                       text-anchor="middle"
                       transform="translate(0, 14)"
                     >
-                      9.3
+                      3
                     </text>
                   </g>
                   <g
                     class="rv-xy-plot__axis__tick"
-                    transform="translate(220.0000000000002, 0)"
+                    transform="translate(220, 0)"
                   >
                     <line
                       class="rv-xy-plot__axis__tick__line"
@@ -283,7 +318,7 @@ Object {
                       text-anchor="middle"
                       transform="translate(0, 14)"
                     >
-                      9.4
+                      4
                     </text>
                   </g>
                   <g
@@ -303,12 +338,12 @@ Object {
                       text-anchor="middle"
                       transform="translate(0, 14)"
                     >
-                      9.5
+                      5
                     </text>
                   </g>
                   <g
                     class="rv-xy-plot__axis__tick"
-                    transform="translate(329.99999999999983, 0)"
+                    transform="translate(330, 0)"
                   >
                     <line
                       class="rv-xy-plot__axis__tick__line"
@@ -323,12 +358,12 @@ Object {
                       text-anchor="middle"
                       transform="translate(0, 14)"
                     >
-                      9.6
+                      6
                     </text>
                   </g>
                   <g
                     class="rv-xy-plot__axis__tick"
-                    transform="translate(384.9999999999996, 0)"
+                    transform="translate(385, 0)"
                   >
                     <line
                       class="rv-xy-plot__axis__tick__line"
@@ -343,12 +378,12 @@ Object {
                       text-anchor="middle"
                       transform="translate(0, 14)"
                     >
-                      9.7
+                      7
                     </text>
                   </g>
                   <g
                     class="rv-xy-plot__axis__tick"
-                    transform="translate(440.0000000000004, 0)"
+                    transform="translate(440, 0)"
                   >
                     <line
                       class="rv-xy-plot__axis__tick__line"
@@ -363,12 +398,12 @@ Object {
                       text-anchor="middle"
                       transform="translate(0, 14)"
                     >
-                      9.8
+                      8
                     </text>
                   </g>
                   <g
                     class="rv-xy-plot__axis__tick"
-                    transform="translate(495.00000000000017, 0)"
+                    transform="translate(495, 0)"
                   >
                     <line
                       class="rv-xy-plot__axis__tick__line"
@@ -383,7 +418,7 @@ Object {
                       text-anchor="middle"
                       transform="translate(0, 14)"
                     >
-                      9.9
+                      9
                     </text>
                   </g>
                   <g
@@ -403,7 +438,7 @@ Object {
                       text-anchor="middle"
                       transform="translate(0, 14)"
                     >
-                      10.0
+                      10
                     </text>
                   </g>
                 </g>
@@ -440,12 +475,12 @@ Object {
                       text-anchor="end"
                       transform="translate(-14, 0)"
                     >
-                      9.0
+                      0
                     </text>
                   </g>
                   <g
                     class="rv-xy-plot__axis__tick"
-                    transform="translate(0, 481.25)"
+                    transform="translate(0, 507.69230769230774)"
                   >
                     <line
                       class="rv-xy-plot__axis__tick__line"
@@ -460,12 +495,12 @@ Object {
                       text-anchor="end"
                       transform="translate(-14, 0)"
                     >
-                      9.5
+                      1
                     </text>
                   </g>
                   <g
                     class="rv-xy-plot__axis__tick"
-                    transform="translate(0, 412.5)"
+                    transform="translate(0, 465.38461538461536)"
                   >
                     <line
                       class="rv-xy-plot__axis__tick__line"
@@ -480,12 +515,12 @@ Object {
                       text-anchor="end"
                       transform="translate(-14, 0)"
                     >
-                      10.0
+                      2
                     </text>
                   </g>
                   <g
                     class="rv-xy-plot__axis__tick"
-                    transform="translate(0, 343.75)"
+                    transform="translate(0, 423.07692307692304)"
                   >
                     <line
                       class="rv-xy-plot__axis__tick__line"
@@ -500,12 +535,12 @@ Object {
                       text-anchor="end"
                       transform="translate(-14, 0)"
                     >
-                      10.5
+                      3
                     </text>
                   </g>
                   <g
                     class="rv-xy-plot__axis__tick"
-                    transform="translate(0, 275)"
+                    transform="translate(0, 380.7692307692308)"
                   >
                     <line
                       class="rv-xy-plot__axis__tick__line"
@@ -520,12 +555,12 @@ Object {
                       text-anchor="end"
                       transform="translate(-14, 0)"
                     >
-                      11.0
+                      4
                     </text>
                   </g>
                   <g
                     class="rv-xy-plot__axis__tick"
-                    transform="translate(0, 206.25)"
+                    transform="translate(0, 338.46153846153845)"
                   >
                     <line
                       class="rv-xy-plot__axis__tick__line"
@@ -540,12 +575,12 @@ Object {
                       text-anchor="end"
                       transform="translate(-14, 0)"
                     >
-                      11.5
+                      5
                     </text>
                   </g>
                   <g
                     class="rv-xy-plot__axis__tick"
-                    transform="translate(0, 137.5)"
+                    transform="translate(0, 296.15384615384613)"
                   >
                     <line
                       class="rv-xy-plot__axis__tick__line"
@@ -560,12 +595,12 @@ Object {
                       text-anchor="end"
                       transform="translate(-14, 0)"
                     >
-                      12.0
+                      6
                     </text>
                   </g>
                   <g
                     class="rv-xy-plot__axis__tick"
-                    transform="translate(0, 68.75)"
+                    transform="translate(0, 253.84615384615387)"
                   >
                     <line
                       class="rv-xy-plot__axis__tick__line"
@@ -580,7 +615,107 @@ Object {
                       text-anchor="end"
                       transform="translate(-14, 0)"
                     >
-                      12.5
+                      7
+                    </text>
+                  </g>
+                  <g
+                    class="rv-xy-plot__axis__tick"
+                    transform="translate(0, 211.53846153846152)"
+                  >
+                    <line
+                      class="rv-xy-plot__axis__tick__line"
+                      x1="6"
+                      x2="-6"
+                      y1="0"
+                      y2="0"
+                    />
+                    <text
+                      class="rv-xy-plot__axis__tick__text"
+                      dy="0.32em"
+                      text-anchor="end"
+                      transform="translate(-14, 0)"
+                    >
+                      8
+                    </text>
+                  </g>
+                  <g
+                    class="rv-xy-plot__axis__tick"
+                    transform="translate(0, 169.23076923076923)"
+                  >
+                    <line
+                      class="rv-xy-plot__axis__tick__line"
+                      x1="6"
+                      x2="-6"
+                      y1="0"
+                      y2="0"
+                    />
+                    <text
+                      class="rv-xy-plot__axis__tick__text"
+                      dy="0.32em"
+                      text-anchor="end"
+                      transform="translate(-14, 0)"
+                    >
+                      9
+                    </text>
+                  </g>
+                  <g
+                    class="rv-xy-plot__axis__tick"
+                    transform="translate(0, 126.9230769230769)"
+                  >
+                    <line
+                      class="rv-xy-plot__axis__tick__line"
+                      x1="6"
+                      x2="-6"
+                      y1="0"
+                      y2="0"
+                    />
+                    <text
+                      class="rv-xy-plot__axis__tick__text"
+                      dy="0.32em"
+                      text-anchor="end"
+                      transform="translate(-14, 0)"
+                    >
+                      10
+                    </text>
+                  </g>
+                  <g
+                    class="rv-xy-plot__axis__tick"
+                    transform="translate(0, 84.61538461538461)"
+                  >
+                    <line
+                      class="rv-xy-plot__axis__tick__line"
+                      x1="6"
+                      x2="-6"
+                      y1="0"
+                      y2="0"
+                    />
+                    <text
+                      class="rv-xy-plot__axis__tick__text"
+                      dy="0.32em"
+                      text-anchor="end"
+                      transform="translate(-14, 0)"
+                    >
+                      11
+                    </text>
+                  </g>
+                  <g
+                    class="rv-xy-plot__axis__tick"
+                    transform="translate(0, 42.30769230769228)"
+                  >
+                    <line
+                      class="rv-xy-plot__axis__tick__line"
+                      x1="6"
+                      x2="-6"
+                      y1="0"
+                      y2="0"
+                    />
+                    <text
+                      class="rv-xy-plot__axis__tick__text"
+                      dy="0.32em"
+                      text-anchor="end"
+                      transform="translate(-14, 0)"
+                    >
+                      12
                     </text>
                   </g>
                   <g
@@ -600,7 +735,7 @@ Object {
                       text-anchor="end"
                       transform="translate(-14, 0)"
                     >
-                      13.0
+                      13
                     </text>
                   </g>
                 </g>
@@ -611,13 +746,13 @@ Object {
               >
                 <circle
                   cx="550"
-                  cy="275"
+                  cy="84.61538461538461"
                   r="5"
                   style="opacity: 1; stroke: #12939A; fill: #12939A; stroke-width: 1;"
                 />
                 <circle
                   cx="550"
-                  cy="137.5"
+                  cy="42.30769230769228"
                   r="5"
                   style="opacity: 1; stroke: #12939A; fill: #12939A; stroke-width: 1;"
                 />
@@ -634,11 +769,21 @@ Object {
               >
                 <text
                   class="rv-xy-plot__series--label-text"
-                  dominant-baseline="text-after-edge"
+                  dominant-baseline="text-before-edge"
                   text-anchor="end"
-                  transform="rotate(0,550,275)"
+                  transform="rotate(0,495,169.23076923076923)"
+                  x="495"
+                  y="169.23076923076923"
+                >
+                  user
+                </text>
+                <text
+                  class="rv-xy-plot__series--label-text"
+                  dominant-baseline="text-before-edge"
+                  text-anchor="end"
+                  transform="rotate(0,550,84.61538461538461)"
                   x="550"
-                  y="275"
+                  y="84.61538461538461"
                 >
                   cs1
                 </text>
@@ -646,9 +791,9 @@ Object {
                   class="rv-xy-plot__series--label-text"
                   dominant-baseline="text-before-edge"
                   text-anchor="end"
-                  transform="rotate(0,550,137.5)"
+                  transform="rotate(0,550,42.30769230769228)"
                   x="550"
-                  y="137.5"
+                  y="42.30769230769228"
                 >
                   cs2
                 </text>
@@ -670,7 +815,7 @@ Object {
                   x="0"
                   y="550"
                 >
-                  cs1
+                  User
                 </text>
               </g>
               <g
@@ -679,13 +824,35 @@ Object {
               >
                 <g
                   class="rv-xy-plot__series--custom-svg"
-                  transform="translate(0,550)"
+                  transform="translate(495,169.23076923076923)"
                 >
                   <circle
                     cx="0"
                     cy="0"
                     r="1"
                   />
+                </g>
+                <g
+                  class="rv-xy-plot__series--custom-svg"
+                  transform="translate(0,550)"
+                >
+                  <g
+                    cx="0"
+                    cy="550"
+                    id="user-pointer"
+                  >
+                    <svg
+                      height="24"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12 0c-3.148 0-6 2.553-6 5.702 0 3.148 2.602 6.907 6 12.298 3.398-5.391 6-9.15 6-12.298 0-3.149-2.851-5.702-6-5.702zm0 8c-1.105 0-2-.895-2-2s.895-2 2-2 2 .895 2 2-.895 2-2 2zm10.881-2.501c0-1.492-.739-2.83-1.902-3.748l.741-.752c1.395 1.101 2.28 2.706 2.28 4.5s-.885 3.4-2.28 4.501l-.741-.753c1.163-.917 1.902-2.256 1.902-3.748zm-3.381 2.249l.74.751c.931-.733 1.521-1.804 1.521-3 0-1.195-.59-2.267-1.521-3l-.74.751c.697.551 1.141 1.354 1.141 2.249s-.444 1.699-1.141 2.249zm-16.479 1.499l-.741.753c-1.395-1.101-2.28-2.707-2.28-4.501s.885-3.399 2.28-4.5l.741.752c-1.163.918-1.902 2.256-1.902 3.748s.739 2.831 1.902 3.748zm.338-3.748c0-.896.443-1.698 1.141-2.249l-.74-.751c-.931.733-1.521 1.805-1.521 3 0 1.196.59 2.267 1.521 3l.74-.751c-.697-.55-1.141-1.353-1.141-2.249zm16.641 14.501c0 2.209-3.581 4-8 4s-8-1.791-8-4c0-1.602 1.888-2.98 4.608-3.619l1.154 1.824c-.401.068-.806.135-1.178.242-3.312.949-3.453 2.109-.021 3.102 2.088.603 4.777.605 6.874-.001 3.619-1.047 3.164-2.275-.268-3.167-.296-.077-.621-.118-.936-.171l1.156-1.828c2.723.638 4.611 2.016 4.611 3.618z"
+                        fill="red"
+                      />
+                    </svg>
+                  </g>
                 </g>
               </g>
             </svg>
@@ -768,29 +935,29 @@ Object {
               />
               <line
                 class="rv-xy-plot__grid-lines__line"
-                x1="54.9999999999998"
-                x2="54.9999999999998"
+                x1="55"
+                x2="55"
                 y1="0"
                 y2="550"
               />
               <line
                 class="rv-xy-plot__grid-lines__line"
-                x1="109.9999999999996"
-                x2="109.9999999999996"
+                x1="110"
+                x2="110"
                 y1="0"
                 y2="550"
               />
               <line
                 class="rv-xy-plot__grid-lines__line"
-                x1="165.0000000000004"
-                x2="165.0000000000004"
+                x1="165"
+                x2="165"
                 y1="0"
                 y2="550"
               />
               <line
                 class="rv-xy-plot__grid-lines__line"
-                x1="220.0000000000002"
-                x2="220.0000000000002"
+                x1="220"
+                x2="220"
                 y1="0"
                 y2="550"
               />
@@ -803,29 +970,29 @@ Object {
               />
               <line
                 class="rv-xy-plot__grid-lines__line"
-                x1="329.99999999999983"
-                x2="329.99999999999983"
+                x1="330"
+                x2="330"
                 y1="0"
                 y2="550"
               />
               <line
                 class="rv-xy-plot__grid-lines__line"
-                x1="384.9999999999996"
-                x2="384.9999999999996"
+                x1="385"
+                x2="385"
                 y1="0"
                 y2="550"
               />
               <line
                 class="rv-xy-plot__grid-lines__line"
-                x1="440.0000000000004"
-                x2="440.0000000000004"
+                x1="440"
+                x2="440"
                 y1="0"
                 y2="550"
               />
               <line
                 class="rv-xy-plot__grid-lines__line"
-                x1="495.00000000000017"
-                x2="495.00000000000017"
+                x1="495"
+                x2="495"
                 y1="0"
                 y2="550"
               />
@@ -852,50 +1019,85 @@ Object {
                 class="rv-xy-plot__grid-lines__line"
                 x1="0"
                 x2="550"
-                y1="481.25"
-                y2="481.25"
+                y1="507.69230769230774"
+                y2="507.69230769230774"
               />
               <line
                 class="rv-xy-plot__grid-lines__line"
                 x1="0"
                 x2="550"
-                y1="412.5"
-                y2="412.5"
+                y1="465.38461538461536"
+                y2="465.38461538461536"
               />
               <line
                 class="rv-xy-plot__grid-lines__line"
                 x1="0"
                 x2="550"
-                y1="343.75"
-                y2="343.75"
+                y1="423.07692307692304"
+                y2="423.07692307692304"
               />
               <line
                 class="rv-xy-plot__grid-lines__line"
                 x1="0"
                 x2="550"
-                y1="275"
-                y2="275"
+                y1="380.7692307692308"
+                y2="380.7692307692308"
               />
               <line
                 class="rv-xy-plot__grid-lines__line"
                 x1="0"
                 x2="550"
-                y1="206.25"
-                y2="206.25"
+                y1="338.46153846153845"
+                y2="338.46153846153845"
               />
               <line
                 class="rv-xy-plot__grid-lines__line"
                 x1="0"
                 x2="550"
-                y1="137.5"
-                y2="137.5"
+                y1="296.15384615384613"
+                y2="296.15384615384613"
               />
               <line
                 class="rv-xy-plot__grid-lines__line"
                 x1="0"
                 x2="550"
-                y1="68.75"
-                y2="68.75"
+                y1="253.84615384615387"
+                y2="253.84615384615387"
+              />
+              <line
+                class="rv-xy-plot__grid-lines__line"
+                x1="0"
+                x2="550"
+                y1="211.53846153846152"
+                y2="211.53846153846152"
+              />
+              <line
+                class="rv-xy-plot__grid-lines__line"
+                x1="0"
+                x2="550"
+                y1="169.23076923076923"
+                y2="169.23076923076923"
+              />
+              <line
+                class="rv-xy-plot__grid-lines__line"
+                x1="0"
+                x2="550"
+                y1="126.9230769230769"
+                y2="126.9230769230769"
+              />
+              <line
+                class="rv-xy-plot__grid-lines__line"
+                x1="0"
+                x2="550"
+                y1="84.61538461538461"
+                y2="84.61538461538461"
+              />
+              <line
+                class="rv-xy-plot__grid-lines__line"
+                x1="0"
+                x2="550"
+                y1="42.30769230769228"
+                y2="42.30769230769228"
               />
               <line
                 class="rv-xy-plot__grid-lines__line"
@@ -937,12 +1139,12 @@ Object {
                     text-anchor="middle"
                     transform="translate(0, 14)"
                   >
-                    9.0
+                    0
                   </text>
                 </g>
                 <g
                   class="rv-xy-plot__axis__tick"
-                  transform="translate(54.9999999999998, 0)"
+                  transform="translate(55, 0)"
                 >
                   <line
                     class="rv-xy-plot__axis__tick__line"
@@ -957,12 +1159,12 @@ Object {
                     text-anchor="middle"
                     transform="translate(0, 14)"
                   >
-                    9.1
+                    1
                   </text>
                 </g>
                 <g
                   class="rv-xy-plot__axis__tick"
-                  transform="translate(109.9999999999996, 0)"
+                  transform="translate(110, 0)"
                 >
                   <line
                     class="rv-xy-plot__axis__tick__line"
@@ -977,12 +1179,12 @@ Object {
                     text-anchor="middle"
                     transform="translate(0, 14)"
                   >
-                    9.2
+                    2
                   </text>
                 </g>
                 <g
                   class="rv-xy-plot__axis__tick"
-                  transform="translate(165.0000000000004, 0)"
+                  transform="translate(165, 0)"
                 >
                   <line
                     class="rv-xy-plot__axis__tick__line"
@@ -997,12 +1199,12 @@ Object {
                     text-anchor="middle"
                     transform="translate(0, 14)"
                   >
-                    9.3
+                    3
                   </text>
                 </g>
                 <g
                   class="rv-xy-plot__axis__tick"
-                  transform="translate(220.0000000000002, 0)"
+                  transform="translate(220, 0)"
                 >
                   <line
                     class="rv-xy-plot__axis__tick__line"
@@ -1017,7 +1219,7 @@ Object {
                     text-anchor="middle"
                     transform="translate(0, 14)"
                   >
-                    9.4
+                    4
                   </text>
                 </g>
                 <g
@@ -1037,12 +1239,12 @@ Object {
                     text-anchor="middle"
                     transform="translate(0, 14)"
                   >
-                    9.5
+                    5
                   </text>
                 </g>
                 <g
                   class="rv-xy-plot__axis__tick"
-                  transform="translate(329.99999999999983, 0)"
+                  transform="translate(330, 0)"
                 >
                   <line
                     class="rv-xy-plot__axis__tick__line"
@@ -1057,12 +1259,12 @@ Object {
                     text-anchor="middle"
                     transform="translate(0, 14)"
                   >
-                    9.6
+                    6
                   </text>
                 </g>
                 <g
                   class="rv-xy-plot__axis__tick"
-                  transform="translate(384.9999999999996, 0)"
+                  transform="translate(385, 0)"
                 >
                   <line
                     class="rv-xy-plot__axis__tick__line"
@@ -1077,12 +1279,12 @@ Object {
                     text-anchor="middle"
                     transform="translate(0, 14)"
                   >
-                    9.7
+                    7
                   </text>
                 </g>
                 <g
                   class="rv-xy-plot__axis__tick"
-                  transform="translate(440.0000000000004, 0)"
+                  transform="translate(440, 0)"
                 >
                   <line
                     class="rv-xy-plot__axis__tick__line"
@@ -1097,12 +1299,12 @@ Object {
                     text-anchor="middle"
                     transform="translate(0, 14)"
                   >
-                    9.8
+                    8
                   </text>
                 </g>
                 <g
                   class="rv-xy-plot__axis__tick"
-                  transform="translate(495.00000000000017, 0)"
+                  transform="translate(495, 0)"
                 >
                   <line
                     class="rv-xy-plot__axis__tick__line"
@@ -1117,7 +1319,7 @@ Object {
                     text-anchor="middle"
                     transform="translate(0, 14)"
                   >
-                    9.9
+                    9
                   </text>
                 </g>
                 <g
@@ -1137,7 +1339,7 @@ Object {
                     text-anchor="middle"
                     transform="translate(0, 14)"
                   >
-                    10.0
+                    10
                   </text>
                 </g>
               </g>
@@ -1174,12 +1376,12 @@ Object {
                     text-anchor="end"
                     transform="translate(-14, 0)"
                   >
-                    9.0
+                    0
                   </text>
                 </g>
                 <g
                   class="rv-xy-plot__axis__tick"
-                  transform="translate(0, 481.25)"
+                  transform="translate(0, 507.69230769230774)"
                 >
                   <line
                     class="rv-xy-plot__axis__tick__line"
@@ -1194,12 +1396,12 @@ Object {
                     text-anchor="end"
                     transform="translate(-14, 0)"
                   >
-                    9.5
+                    1
                   </text>
                 </g>
                 <g
                   class="rv-xy-plot__axis__tick"
-                  transform="translate(0, 412.5)"
+                  transform="translate(0, 465.38461538461536)"
                 >
                   <line
                     class="rv-xy-plot__axis__tick__line"
@@ -1214,12 +1416,12 @@ Object {
                     text-anchor="end"
                     transform="translate(-14, 0)"
                   >
-                    10.0
+                    2
                   </text>
                 </g>
                 <g
                   class="rv-xy-plot__axis__tick"
-                  transform="translate(0, 343.75)"
+                  transform="translate(0, 423.07692307692304)"
                 >
                   <line
                     class="rv-xy-plot__axis__tick__line"
@@ -1234,12 +1436,12 @@ Object {
                     text-anchor="end"
                     transform="translate(-14, 0)"
                   >
-                    10.5
+                    3
                   </text>
                 </g>
                 <g
                   class="rv-xy-plot__axis__tick"
-                  transform="translate(0, 275)"
+                  transform="translate(0, 380.7692307692308)"
                 >
                   <line
                     class="rv-xy-plot__axis__tick__line"
@@ -1254,12 +1456,12 @@ Object {
                     text-anchor="end"
                     transform="translate(-14, 0)"
                   >
-                    11.0
+                    4
                   </text>
                 </g>
                 <g
                   class="rv-xy-plot__axis__tick"
-                  transform="translate(0, 206.25)"
+                  transform="translate(0, 338.46153846153845)"
                 >
                   <line
                     class="rv-xy-plot__axis__tick__line"
@@ -1274,12 +1476,12 @@ Object {
                     text-anchor="end"
                     transform="translate(-14, 0)"
                   >
-                    11.5
+                    5
                   </text>
                 </g>
                 <g
                   class="rv-xy-plot__axis__tick"
-                  transform="translate(0, 137.5)"
+                  transform="translate(0, 296.15384615384613)"
                 >
                   <line
                     class="rv-xy-plot__axis__tick__line"
@@ -1294,12 +1496,12 @@ Object {
                     text-anchor="end"
                     transform="translate(-14, 0)"
                   >
-                    12.0
+                    6
                   </text>
                 </g>
                 <g
                   class="rv-xy-plot__axis__tick"
-                  transform="translate(0, 68.75)"
+                  transform="translate(0, 253.84615384615387)"
                 >
                   <line
                     class="rv-xy-plot__axis__tick__line"
@@ -1314,7 +1516,107 @@ Object {
                     text-anchor="end"
                     transform="translate(-14, 0)"
                   >
-                    12.5
+                    7
+                  </text>
+                </g>
+                <g
+                  class="rv-xy-plot__axis__tick"
+                  transform="translate(0, 211.53846153846152)"
+                >
+                  <line
+                    class="rv-xy-plot__axis__tick__line"
+                    x1="6"
+                    x2="-6"
+                    y1="0"
+                    y2="0"
+                  />
+                  <text
+                    class="rv-xy-plot__axis__tick__text"
+                    dy="0.32em"
+                    text-anchor="end"
+                    transform="translate(-14, 0)"
+                  >
+                    8
+                  </text>
+                </g>
+                <g
+                  class="rv-xy-plot__axis__tick"
+                  transform="translate(0, 169.23076923076923)"
+                >
+                  <line
+                    class="rv-xy-plot__axis__tick__line"
+                    x1="6"
+                    x2="-6"
+                    y1="0"
+                    y2="0"
+                  />
+                  <text
+                    class="rv-xy-plot__axis__tick__text"
+                    dy="0.32em"
+                    text-anchor="end"
+                    transform="translate(-14, 0)"
+                  >
+                    9
+                  </text>
+                </g>
+                <g
+                  class="rv-xy-plot__axis__tick"
+                  transform="translate(0, 126.9230769230769)"
+                >
+                  <line
+                    class="rv-xy-plot__axis__tick__line"
+                    x1="6"
+                    x2="-6"
+                    y1="0"
+                    y2="0"
+                  />
+                  <text
+                    class="rv-xy-plot__axis__tick__text"
+                    dy="0.32em"
+                    text-anchor="end"
+                    transform="translate(-14, 0)"
+                  >
+                    10
+                  </text>
+                </g>
+                <g
+                  class="rv-xy-plot__axis__tick"
+                  transform="translate(0, 84.61538461538461)"
+                >
+                  <line
+                    class="rv-xy-plot__axis__tick__line"
+                    x1="6"
+                    x2="-6"
+                    y1="0"
+                    y2="0"
+                  />
+                  <text
+                    class="rv-xy-plot__axis__tick__text"
+                    dy="0.32em"
+                    text-anchor="end"
+                    transform="translate(-14, 0)"
+                  >
+                    11
+                  </text>
+                </g>
+                <g
+                  class="rv-xy-plot__axis__tick"
+                  transform="translate(0, 42.30769230769228)"
+                >
+                  <line
+                    class="rv-xy-plot__axis__tick__line"
+                    x1="6"
+                    x2="-6"
+                    y1="0"
+                    y2="0"
+                  />
+                  <text
+                    class="rv-xy-plot__axis__tick__text"
+                    dy="0.32em"
+                    text-anchor="end"
+                    transform="translate(-14, 0)"
+                  >
+                    12
                   </text>
                 </g>
                 <g
@@ -1334,7 +1636,7 @@ Object {
                     text-anchor="end"
                     transform="translate(-14, 0)"
                   >
-                    13.0
+                    13
                   </text>
                 </g>
               </g>
@@ -1345,13 +1647,13 @@ Object {
             >
               <circle
                 cx="550"
-                cy="275"
+                cy="84.61538461538461"
                 r="5"
                 style="opacity: 1; stroke: #12939A; fill: #12939A; stroke-width: 1;"
               />
               <circle
                 cx="550"
-                cy="137.5"
+                cy="42.30769230769228"
                 r="5"
                 style="opacity: 1; stroke: #12939A; fill: #12939A; stroke-width: 1;"
               />
@@ -1368,11 +1670,21 @@ Object {
             >
               <text
                 class="rv-xy-plot__series--label-text"
-                dominant-baseline="text-after-edge"
+                dominant-baseline="text-before-edge"
                 text-anchor="end"
-                transform="rotate(0,550,275)"
+                transform="rotate(0,495,169.23076923076923)"
+                x="495"
+                y="169.23076923076923"
+              >
+                user
+              </text>
+              <text
+                class="rv-xy-plot__series--label-text"
+                dominant-baseline="text-before-edge"
+                text-anchor="end"
+                transform="rotate(0,550,84.61538461538461)"
                 x="550"
-                y="275"
+                y="84.61538461538461"
               >
                 cs1
               </text>
@@ -1380,9 +1692,9 @@ Object {
                 class="rv-xy-plot__series--label-text"
                 dominant-baseline="text-before-edge"
                 text-anchor="end"
-                transform="rotate(0,550,137.5)"
+                transform="rotate(0,550,42.30769230769228)"
                 x="550"
-                y="137.5"
+                y="42.30769230769228"
               >
                 cs2
               </text>
@@ -1404,7 +1716,7 @@ Object {
                 x="0"
                 y="550"
               >
-                cs1
+                User
               </text>
             </g>
             <g
@@ -1413,13 +1725,35 @@ Object {
             >
               <g
                 class="rv-xy-plot__series--custom-svg"
-                transform="translate(0,550)"
+                transform="translate(495,169.23076923076923)"
               >
                 <circle
                   cx="0"
                   cy="0"
                   r="1"
                 />
+              </g>
+              <g
+                class="rv-xy-plot__series--custom-svg"
+                transform="translate(0,550)"
+              >
+                <g
+                  cx="0"
+                  cy="550"
+                  id="user-pointer"
+                >
+                  <svg
+                    height="24"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 0c-3.148 0-6 2.553-6 5.702 0 3.148 2.602 6.907 6 12.298 3.398-5.391 6-9.15 6-12.298 0-3.149-2.851-5.702-6-5.702zm0 8c-1.105 0-2-.895-2-2s.895-2 2-2 2 .895 2 2-.895 2-2 2zm10.881-2.501c0-1.492-.739-2.83-1.902-3.748l.741-.752c1.395 1.101 2.28 2.706 2.28 4.5s-.885 3.4-2.28 4.501l-.741-.753c1.163-.917 1.902-2.256 1.902-3.748zm-3.381 2.249l.74.751c.931-.733 1.521-1.804 1.521-3 0-1.195-.59-2.267-1.521-3l-.74.751c.697.551 1.141 1.354 1.141 2.249s-.444 1.699-1.141 2.249zm-16.479 1.499l-.741.753c-1.395-1.101-2.28-2.707-2.28-4.501s.885-3.399 2.28-4.5l.741.752c-1.163.918-1.902 2.256-1.902 3.748s.739 2.831 1.902 3.748zm.338-3.748c0-.896.443-1.698 1.141-2.249l-.74-.751c-.931.733-1.521 1.805-1.521 3 0 1.196.59 2.267 1.521 3l.74-.751c-.697-.55-1.141-1.353-1.141-2.249zm16.641 14.501c0 2.209-3.581 4-8 4s-8-1.791-8-4c0-1.602 1.888-2.98 4.608-3.619l1.154 1.824c-.401.068-.806.135-1.178.242-3.312.949-3.453 2.109-.021 3.102 2.088.603 4.777.605 6.874-.001 3.619-1.047 3.164-2.275-.268-3.167-.296-.077-.621-.118-.936-.171l1.156-1.828c2.723.638 4.611 2.016 4.611 3.618z"
+                      fill="red"
+                    />
+                  </svg>
+                </g>
               </g>
             </g>
           </svg>

@@ -632,6 +632,16 @@ Object {
               <text
                 class="rv-xy-plot__series--label-text"
                 dominant-baseline="text-after-edge"
+                text-anchor="start"
+                transform="rotate(0,0,550)"
+                x="0"
+                y="550"
+              >
+                user
+              </text>
+              <text
+                class="rv-xy-plot__series--label-text"
+                dominant-baseline="text-after-edge"
                 text-anchor="end"
                 transform="rotate(0,550,275)"
                 x="550"
@@ -658,16 +668,6 @@ Object {
                 y="0"
               >
                 cs3
-              </text>
-              <text
-                class="rv-xy-plot__series--label-text"
-                dominant-baseline="text-after-edge"
-                text-anchor="start"
-                transform="rotate(0,0,550)"
-                x="0"
-                y="550"
-              >
-                cs1
               </text>
             </g>
             <g
@@ -1362,6 +1362,16 @@ Object {
             <text
               class="rv-xy-plot__series--label-text"
               dominant-baseline="text-after-edge"
+              text-anchor="start"
+              transform="rotate(0,0,550)"
+              x="0"
+              y="550"
+            >
+              user
+            </text>
+            <text
+              class="rv-xy-plot__series--label-text"
+              dominant-baseline="text-after-edge"
               text-anchor="end"
               transform="rotate(0,550,275)"
               x="550"
@@ -1388,16 +1398,6 @@ Object {
               y="0"
             >
               cs3
-            </text>
-            <text
-              class="rv-xy-plot__series--label-text"
-              dominant-baseline="text-after-edge"
-              text-anchor="start"
-              transform="rotate(0,0,550)"
-              x="0"
-              y="550"
-            >
-              cs1
             </text>
           </g>
           <g
