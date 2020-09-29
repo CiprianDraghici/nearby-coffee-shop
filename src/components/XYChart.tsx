@@ -29,25 +29,16 @@ const XYChart: React.FC<XYChartProps> = (props) => {
 
     const onValueMouseOver = (datapoint: any, e: any) => {
         e.event.stopPropagation();
-
-        setTooltipPosition({
-            x: e.event.target.getBBox().x + 50,
-            y: e.event.target.getBBox().y + 30,
-            datapoint
-        });
+        defineTooltipCoordinates(e.event.target, datapoint);
     }
 
     const onUserMouseOver = (datapoint: any, e: any) => {
         e.event.stopPropagation();
 
-        const customSvgSeries = document.querySelector("g.custom-svg-series-anchor") as SVGAElement;
+        const customSvgSeries = document.querySelector("g.custom-svg-series-anchor") as SVGGraphicsElement;
         if(!customSvgSeries) { return; }
 
-        setTooltipPosition({
-            x: customSvgSeries.getBBox().x + 50,
-            y: customSvgSeries.getBBox().y + 30,
-            datapoint
-        });
+        defineTooltipCoordinates(customSvgSeries, datapoint);
     }
 
     const onValueMouseOut = (datapoint: any, e: any) => {
@@ -57,6 +48,14 @@ const XYChart: React.FC<XYChartProps> = (props) => {
 
     const onClick = () => {
         props.selectedDataPointCallback(null);
+    }
+
+    const defineTooltipCoordinates = (targetElement: SVGGraphicsElement, datapoint: any) => {
+        setTooltipPosition({
+            x: targetElement.getBBox().x + 50,
+            y: targetElement.getBBox().y + 30,
+            datapoint
+        });
     }
 
     const TooltipContent = () => {
