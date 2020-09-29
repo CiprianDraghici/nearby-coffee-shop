@@ -1,9 +1,9 @@
 import {render, screen} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
-import XYChart from "./XYChart";
+import Chart from "./Chart";
 
-describe("XYChart component", () => {
+describe("Chart component", () => {
     const chartProps = {
         data: [ {id: 1, name: "cs1", label: "cs1", x: 10, y: 11}, {id: 2, name: "cs2", label: "cs2", x: 10, y: 12}, {id: 3, name: "cs3", label: "cs3", x: 10, y: 13} ],
         userDataPoint: { id: 1, name: "cs1", label: "cs1", x: 9, y: 9 },
@@ -11,14 +11,14 @@ describe("XYChart component", () => {
     }
 
     it('renders the chart in DOM and prevent regression', () => {
-        const sut = render(<XYChart {...chartProps} />);
+        const sut = render(<Chart {...chartProps} />);
 
         expect(screen.getByTestId(/XY-Chart/)).toBeInTheDocument();
         expect(sut).toMatchSnapshot();
     });
 
     it(`renders data series in DOM`, () => {
-        const {container} = render(<XYChart {...chartProps} />);
+        const {container} = render(<Chart {...chartProps} />);
 
         const seriesElement = container.querySelector(`g.mark-series-overrides`);
 
@@ -27,7 +27,7 @@ describe("XYChart component", () => {
     });
 
     it(`renders user series in DOM`, () => {
-        const {container} = render(<XYChart {...chartProps} />);
+        const {container} = render(<Chart {...chartProps} />);
 
         const seriesElement = container.querySelector(`g.custom-svg-series-anchor`);
 
@@ -37,7 +37,7 @@ describe("XYChart component", () => {
 
     describe("MarkSeries component", () => {
         it(`display a tooltip text with the point coordinates hovering mouse cursor over the point and hide the tooltip when the point hover is lost`, () => {
-            const {container} = render(<XYChart {...chartProps} />);
+            const {container} = render(<Chart {...chartProps} />);
             const pointIndex = 1;
             const seriesContainer = container.querySelector(`g.mark-series-overrides`) as SVGGElement;
             const seriesElement = seriesContainer?.children[pointIndex] as SVGCircleElement
@@ -54,7 +54,7 @@ describe("XYChart component", () => {
         })
 
         it(`pass the selected point to the parent clicking on a plotted point`, () => {
-            const {container} = render(<XYChart {...chartProps} />);
+            const {container} = render(<Chart {...chartProps} />);
             const pointIndex = 1;
             const seriesContainer = container.querySelector(`g.mark-series-overrides`) as SVGGElement;
             const seriesElement = seriesContainer?.children[pointIndex] as SVGCircleElement
@@ -68,7 +68,7 @@ describe("XYChart component", () => {
 
     describe("CustomSVGSeries component", () => {
         it(`display a tooltip text with the point coordinates hovering mouse cursor over the point and hide the tooltip when the point hover is lost`, () => {
-            const {container} = render(<XYChart {...chartProps} />);
+            const {container} = render(<Chart {...chartProps} />);
             const userSeriesContainer = container.querySelector(`g.custom-svg-series-anchor`) as SVGGElement;
             userSeriesContainer.getBBox = () => chartProps.data[0] as any;
             const userSeriesElement = userSeriesContainer?.children[0]! as SVGCircleElement;

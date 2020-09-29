@@ -19,7 +19,7 @@ describe("NearestCoffeeShops component", () => {
         }));
     }
 
-    it('renders XYChart in DOM and prevent regression', () => {
+    it('renders Chart in DOM and prevent regression', () => {
         const sut = render(<NearestCoffeeShops {...props} />);
 
         expect(sut).toMatchSnapshot();
@@ -48,7 +48,7 @@ describe("NearestCoffeeShops component", () => {
         })
     })
 
-    it("renders XYChart and plot the data", async () => {
+    it("renders Chart and plot the data", async () => {
         const fakeResponse = {ok: true, statusText: "Done", parsedBody: [{id: 1, x: 10, y: 11, name: "test", label: "test"}], status: 200};
         setHttpServiceMock(fakeResponse);
 

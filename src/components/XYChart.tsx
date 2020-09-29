@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {
     XYPlot,
     VerticalGridLines,
@@ -10,63 +10,52 @@ import {
     LabelSeries,
     DiscreteColorLegend
 } from "react-vis";
-import Tooltip from "./Tooltip";
 import {SeriesPoint} from "../services/x-y-chart.service";
 
 interface XYChartProps {
     data: SeriesPoint[];
     userDataPoint: SeriesPoint;
-    selectedDataPointCallback: (dataPoint: SeriesPoint | null) => void;
+
+    onValueMouseOverCallback?: (dataPoint: SeriesPoint, target: SVGGraphicsElement) => void;
+    onValueMouseOutCallback?: (e: any) => void;
+    onValueClickCallback?: (dataPoint: SeriesPoint | null) => void;
 }
 
 const XYChart: React.FC<XYChartProps> = (props) => {
-    const [tooltipPosition, setTooltipPosition] = useState<{x: string | number, y: string | number, datapoint: SeriesPoint} | null>( null);
-
-    const onValueClick = (datapoint: any, e: any) => {
+    const onValueClick = (datapoint: SeriesPoint, e: any) => {
         e.event.stopPropagation();
-        props.selectedDataPointCallback(datapoint);
+
+        if(!props.onValueClickCallback) { return; }
+        props.onValueClickCallback(datapoint);
     }
 
-    const onValueMouseOver = (datapoint: any, e: any) => {
+    const onValueMouseOver = (datapoint: SeriesPoint, e: any) => {
         e.event.stopPropagation();
-        defineTooltipCoordinates(e.event.target, datapoint);
+
+        if(!props.onValueMouseOverCallback) { return; }
+        props.onValueMouseOverCallback(datapoint, e.event.target);
     }
 
-    const onUserMouseOver = (datapoint: any, e: any) => {
+    const onUserMouseOver = (datapoint: SeriesPoint, e: any) => {
         e.event.stopPropagation();
 
         const customSvgSeries = document.querySelector("g.custom-svg-series-anchor") as SVGGraphicsElement;
         if(!customSvgSeries) { return; }
 
-        defineTooltipCoordinates(customSvgSeries, datapoint);
+        if(!props.onValueMouseOverCallback) { return; }
+        props.onValueMouseOverCallback(datapoint, customSvgSeries);
     }
 
-    const onValueMouseOut = (datapoint: any, e: any) => {
+    const onValueMouseOut = (datapoint: SeriesPoint, e: any) => {
         e.event.stopPropagation();
-        setTooltipPosition(null);
+
+        if(!props.onValueMouseOutCallback) { return; }
+        props.onValueMouseOutCallback(e);
     }
 
     const onClick = () => {
-        props.selectedDataPointCallback(null);
-    }
-
-    const defineTooltipCoordinates = (targetElement: SVGGraphicsElement, datapoint: any) => {
-        setTooltipPosition({
-            x: targetElement.getBBox().x + 50,
-            y: targetElement.getBBox().y + 30,
-            datapoint
-        });
-    }
-
-    const TooltipContent = () => {
-        if(!tooltipPosition) { return <></>;}
-
-        return (
-            <div data-testid={"tooltip-content"}>
-                <div style={{textAlign: "left"}}>{`Latitude: ${tooltipPosition!.datapoint.y}`}</div>
-                <div style={{textAlign: "left"}}>{`Longitude: ${tooltipPosition!.datapoint.x}`}</div>
-            </div>
-        );
+        if(!props.onValueClickCallback) { return; }
+        props.onValueClickCallback(null);
     }
 
     const getLegend = () => {
@@ -105,11 +94,10 @@ const XYChart: React.FC<XYChartProps> = (props) => {
                 <LabelSeries allowOffsetToBeReversed={true} data={[...props.data, props.userDataPoint] as any[]} />
                 <CustomSVGSeries className={"custom-svg-series-anchor"} data={[props.userDataPoint] as any[]} onValueMouseOver={onUserMouseOver} onValueMouseOut={onValueMouseOut} />
 
-                <Tooltip show={!!tooltipPosition} position={{...tooltipPosition!}} content={TooltipContent} />
+                {props.children}
             </XYPlot>
             <DiscreteColorLegend items={getLegend()} orientation={"horizontal"} />
         </div>
-
     )
 }
 

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {SeriesPoint, XYChartService} from "../services/x-y-chart.service";
-import XYChart from "./XYChart";
+import Chart from "./Chart";
 import {CoffeeShopsService} from "../services/coffee-shops.service";
 import DisplayDistance from "./DisplayDistance";
 import {CoffeeShopModel} from "../models/coffee-shop.model";
@@ -72,7 +72,7 @@ const NearestCoffeeShops: React.FC<NearestCoffeeShopsProps> = (props) => {
             }
             {
                 remoteData && !error &&
-                <XYChart
+                <Chart
                     data={[...chartData]}
                     userDataPoint={userDataPoint}
                     selectedDataPointCallback={onSelectedDataPoint}
